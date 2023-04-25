@@ -22,7 +22,7 @@ const ViewHome = () => {
         </div>
         <div
           className="flex-1 bg-white rounded-lg shadow-md p-8 flex flex-col items-center justify-center hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
-          onClick={() => {navigate("/addStorySetting")}}
+          onClick={() => {navigate("/viewStorySetting")}}
         >
           <h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
             Setting

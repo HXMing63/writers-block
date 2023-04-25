@@ -1,5 +1,8 @@
 package com.muratoni.writersblock.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,19 @@ public class StorySettingServiceImpl implements StorySettingService {
 
         storySettingRepository.save(storySettingEntity);
         return storySetting;
+    }
+
+    @Override
+    public List<StorySetting> getAllStorySettings() {
+        List<StorySettingEntity> storySettingEntities = storySettingRepository.findAll();
+        List<StorySetting> storySettings = storySettingEntities
+                .stream()
+                .map(tStorySetting -> new StorySetting(
+                    tStorySetting.getId(),
+                    placeMapper.toDto(tStorySetting.getPlaceEntity()),
+                    tStorySetting.getTime()))
+                .collect(Collectors.toList());
+        return storySettings;
     }
 
 }

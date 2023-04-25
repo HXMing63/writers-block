@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar.js";
 import ViewPlace from "./components/places/ViewPlace";
 import ViewHome from "./components/home/ViewHome";
-import AddStorySetting from "./components/storySetting/AddStorySetting";
+import ViewStorySetting from "./components/storySetting/ViewStorySetting";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route index element={<ViewHome />}></Route>
         <Route path="/" element={<ViewHome />}></Route>
         <Route path="/viewPlace" element={<ViewPlace />}></Route>
-        <Route path="/addStorySetting" element={<AddStorySetting />}></Route>
+        <Route path="/viewStorySetting" element={<ViewStorySetting />}></Route>
       </Routes>
     </BrowserRouter>
   );

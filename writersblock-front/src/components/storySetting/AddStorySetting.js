@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PlaceService from "../../services/PlaceService";
 import StorySettingService from "../../services/StorySettingService";
 
-const AddStorySetting = () => {
+const AddStorySetting = ({fetchData}) => {
   const [query, setQuery] = useState("");
   const [places, setPlaces] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -44,7 +44,8 @@ const AddStorySetting = () => {
     StorySettingService.saveStorySetting(storySetting)
       .then((response) => {
         console.log(response);
-        resetForm(e);
+        fetchData();
+        resetForm();
       })
       .catch((err) => {
         console.log(err);
