@@ -1,13 +1,6 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
 
 const Place = ({ place, deletePlace, editPlace }) => {
-  // const navigate = useNavigate();
-
-  //   const editPlace = (e, id) => {
-  //     e.preventDefault();
-  //     navigate(`/editPlace/${id}`);
-  //   };
 
   return (
     <tr

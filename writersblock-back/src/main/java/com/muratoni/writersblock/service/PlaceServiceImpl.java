@@ -1,5 +1,6 @@
 package com.muratoni.writersblock.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,20 +34,13 @@ public class PlaceServiceImpl implements PlaceService {
         List<PlaceEntity> placeEntities = placeRepository.findAll();
         List<Place> places = placeEntities
                 .stream()
-                .map(tPlace -> new Place(tPlace.getId(),
+                .map(tPlace -> new Place(
+                        tPlace.getId(),
                         tPlace.getName(),
                         tPlace.getDescription(),
                         tPlace.getImg()))
                 .collect(Collectors.toList());
-        // System.out.println(places);
         return places;
-    }
-
-    @Override
-    public boolean deletePlace(Long id) {
-        PlaceEntity placeEntity = placeRepository.findById(id).get();
-        placeRepository.delete(placeEntity);
-        return true;
     }
 
     @Override
@@ -55,6 +49,27 @@ public class PlaceServiceImpl implements PlaceService {
         Place place = new Place();
         BeanUtils.copyProperties(placeEntity, place);
         return place;
+    }
+
+    @Override
+    public List<Place> getPlacesByName(String name) {
+        List<PlaceEntity> placeEntities = placeRepository.findLikeName(name);
+        List<Place> places = new ArrayList<Place>();
+
+        for (PlaceEntity placeEntity : placeEntities) {
+            Place place = new Place();
+            BeanUtils.copyProperties(placeEntity, place);
+            places.add(place);
+        }
+
+        return places;
+    }
+
+    @Override
+    public boolean deletePlace(Long id) {
+        PlaceEntity placeEntity = placeRepository.findById(id).get();
+        placeRepository.delete(placeEntity);
+        return true;
     }
 
     @Override

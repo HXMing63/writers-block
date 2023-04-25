@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PLACE_API_BASE_URL = "http://localhost:8080/api/v1/places";
+const PLACE_API_BASE_URL = "http://localhost:8080/api/v1/place";
 
 class PlaceService {
   savePlace(place) {
@@ -8,15 +8,19 @@ class PlaceService {
   }
 
   getPlaces() {
-    return axios.get(PLACE_API_BASE_URL);
-  }
-
-  deletePlace(id) {
-    return axios.delete(PLACE_API_BASE_URL + "/" + id);
+    return axios.get(PLACE_API_BASE_URL + "s");
   }
 
   getPlaceById(id){
     return axios.get(PLACE_API_BASE_URL + "/" + id);
+  }
+
+  getPlacesByName(name){
+    return axios.get(PLACE_API_BASE_URL + "s/" + name);
+  }
+
+  deletePlace(id) {
+    return axios.delete(PLACE_API_BASE_URL + "/" + id);
   }
 
   updatePlace(id, place){

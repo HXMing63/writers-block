@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
 import PlaceService from "../../services/PlaceService";
 
 const EditPlace = ({id, showModal, fetchData}) => {
-//   const navigate = useNavigate();
-//   const { id } = useParams();
   const [place, setPlace] = useState({
     id: id,
     img: "",
@@ -16,7 +13,6 @@ const EditPlace = ({id, showModal, fetchData}) => {
     e.preventDefault();
     PlaceService.updatePlace(id, place)
       .then((response) => {
-        // navigate("/viewPlace");
         fetchData();
         showModal({isVisible: false});
       })
@@ -38,7 +34,6 @@ const EditPlace = ({id, showModal, fetchData}) => {
 
   useEffect((id) => {
     const fetchDataById = async (id) => {
-      // console.log("id is:", id)
       try {
         const response = await PlaceService.getPlaceById(id);
         setPlace(response.data);
