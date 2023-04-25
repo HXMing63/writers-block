@@ -30,9 +30,18 @@ public class PlaceController {
         this.placeService = placeService;
     }
 
-    @PostMapping("/places")
+    @PostMapping("/place")
     public Place createPlace(@RequestBody Place place){
         return placeService.createPlace(place);
+    }
+
+    @GetMapping("/place/{id}")
+    public ResponseEntity<Place> getPlaceById(@PathVariable String id){
+        Place place = null;
+        Long tId = Long.parseLong(id);
+        place = placeService.getPlaceById(tId);
+
+        return ResponseEntity.ok(place);
     }
 
     @GetMapping("/places")
@@ -40,7 +49,15 @@ public class PlaceController {
         return placeService.getAllPlaces();
     }
 
-    @DeleteMapping("/places/{id}")
+    @GetMapping("/places/{name}")
+    public ResponseEntity<List<Place>> getPlacesByName(@PathVariable String name){
+        List<Place> places = null;
+        places = placeService.getPlacesByName(name);
+
+        return ResponseEntity.ok(places);
+    }
+
+    @DeleteMapping("/place/{id}")
     public ResponseEntity<Map<String,Boolean>> deletePlace(@PathVariable Long id){
         boolean isDeleted = false;
         isDeleted = placeService.deletePlace(id);
@@ -51,16 +68,10 @@ public class PlaceController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/places/{id}")
-    public ResponseEntity<Place> getPlaceById(@PathVariable Long id){
-        Place place = null;
-        place = placeService.getPlaceById(id);
-        return ResponseEntity.ok(place);
-    }
-
-    @PutMapping("/places/{id}")
+    @PutMapping("/place/{id}")
     public ResponseEntity<Place> updatePlace(@PathVariable Long id, @RequestBody Place place){
         place = placeService.updatePlace(id, place);
+        
         return ResponseEntity.ok(place);
     }
 }

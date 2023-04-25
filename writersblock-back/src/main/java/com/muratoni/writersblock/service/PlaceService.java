@@ -10,9 +10,11 @@ public interface PlaceService {
 
     List<Place> getAllPlaces();
 
-    boolean deletePlace(Long id);
-
     Place getPlaceById(Long id);
+
+    List<Place> getPlacesByName(String name);
+
+    boolean deletePlace(Long id);
 
     Place updatePlace(Long id, Place place);
     
