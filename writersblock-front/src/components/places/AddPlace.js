@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import PlaceService from "../../services/PlaceService";
 
 const AddPlace = ({fetchData}) => {
@@ -28,7 +27,6 @@ const AddPlace = ({fetchData}) => {
     PlaceService.savePlace(place)
       .then((response) => {
         console.log(response);
-        // navigate("/viewPlace");
         fetchData();
         resetForm();
       })
@@ -107,12 +105,6 @@ const AddPlace = ({fetchData}) => {
           >
             Save
           </button>
-          {/* <button
-            className="float-right rounded-md text-white font-semibold bg-slate-400 px-2 py-2 hover:bg-slate-700"
-            onClick={() => navigate("/viewPlace")}
-          >
-            Cancel
-          </button> */}
         </div>
       </div>
     </div>

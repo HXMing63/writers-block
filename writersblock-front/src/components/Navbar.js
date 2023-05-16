@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-4">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
+      <div className="flex items-center flex-shrink-0 text-white mr-6 hover:cursor-pointer" onClick={() => {navigate("/")}}>
         <span className="font-semibold text-xl tracking-tight">
           Writer's Block
         </span>
@@ -37,7 +37,21 @@ const Navbar = () => {
           >
             <li>
               <a
-                onClick={() => navigate("/viewPlace")}
+                onClick={() => {
+                  navigate("/");
+                  setIsOpen(false);
+                }}
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:cursor-pointer"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => {
+                  navigate("/viewPlace");
+                  setIsOpen(false);
+                }}
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:cursor-pointer"
               >
                 View Place
@@ -45,18 +59,13 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                onClick={() => {
+                  navigate("/addStorySetting");
+                  setIsOpen(false);
+                }}
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:cursor-pointer"
               >
-                Option 2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-              >
-                Option 3
+                Add Setting
               </a>
             </li>
           </ul>
