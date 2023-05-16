@@ -1,7 +1,10 @@
 package com.muratoni.writersblock.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,5 +27,10 @@ public class StorySettingController {
     @PostMapping("/storysetting")
     public StorySetting createStorySetting(@RequestBody StorySetting storySetting){        
         return storySettingService.createStorySetting(storySetting);
+    }
+
+    @GetMapping("/storysettings")
+    public List<StorySetting> getAllStorySettings(){        
+        return storySettingService.getAllStorySettings();
     }
 }

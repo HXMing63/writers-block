@@ -35,8 +35,7 @@ const AddPlace = ({fetchData}) => {
       });
   };
 
-  const resetForm = (e) => {
-    e.preventDefault();
+  const resetForm = () => {
     setPlace({ id: "", img: "", name: "", description: "", fileInputKey: Date.now()});
   };
 
