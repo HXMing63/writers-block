@@ -9,5 +9,7 @@ public interface StorySettingService {
     StorySetting createStorySetting(StorySetting storySetting);
 
     List<StorySetting> getAllStorySettings();
+
+    StorySetting updateStorySetting(Long id, StorySetting storySetting);
     
 }

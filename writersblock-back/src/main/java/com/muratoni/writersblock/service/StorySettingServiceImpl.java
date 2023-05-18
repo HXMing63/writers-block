@@ -44,4 +44,14 @@ public class StorySettingServiceImpl implements StorySettingService {
         return storySettings;
     }
 
+    @Override
+    public StorySetting updateStorySetting(Long id, StorySetting storySetting) {
+        StorySettingEntity storySettingEntity = storySettingRepository.findById(id).get();
+        storySettingEntity.setPlaceEntity(placeMapper.toEntity(storySetting.getPlace()));
+        storySettingEntity.setTime(storySetting.getTime());
+        storySettingRepository.save(storySettingEntity);
+
+        return storySetting;
+    }
+
 }

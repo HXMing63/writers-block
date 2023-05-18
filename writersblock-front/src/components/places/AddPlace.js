@@ -37,6 +37,9 @@ const AddPlace = ({ fetchData }) => {
   return (
     <div className="flex flex-shrink max-w-md shadow border-b mx-auto">
       <div className="px-4 py-4">
+        <div className="font-thin text-2xl tracking-wider">
+          <h1>Add New Place</h1>
+        </div>
         <PlaceForm place={place} setPlace={setPlace}></PlaceForm>
         <div className="flex items-center justify-end h-14 w-full my-8 space-x-2 pt-4">
           <button
@@ -47,7 +50,7 @@ const AddPlace = ({ fetchData }) => {
           </button>
           <button
             className="rounded-md text-white font-semibold bg-green-400 px-2 py-2 hover:bg-green-700"
-            onClick={savePlace}
+            onClick={e => savePlace(e)}
           >
             Save
           </button>

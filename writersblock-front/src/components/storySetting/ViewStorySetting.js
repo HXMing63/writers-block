@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AddStorySetting from "./AddStorySetting";
 import StorySetting from "./StorySetting";
 import StorySettingService from "../../services/StorySettingService";
+import EditStorySetting from "./EditStorySetting";
 
 const ViewStorySetting = () => {
   const [loading, setLoading] = useState(true);
@@ -10,10 +11,10 @@ const ViewStorySetting = () => {
     column: "",
     direction: "asc",
   });
-  // const [modal, showModal] = useState({
-  //   isVisible: false,
-  //   id: "",
-  // });
+  const [modal, showModal] = useState({
+    isVisible: false,
+    storySetting: null,
+  });
 
   const handleSort = (column) => {};
 
@@ -36,8 +37,10 @@ const ViewStorySetting = () => {
 
   }
 
-  const editStorySetting = (e, id) => {
+  const editStorySetting = (e, storySetting) => {
+    e.preventDefault();
 
+    showModal({isVisible: true, storySetting:storySetting});
   }
 
   return (
@@ -93,20 +96,20 @@ const ViewStorySetting = () => {
           <AddStorySetting fetchData={fetchData} />
         </div>
       </div>
-      {/* {modal.isVisible && (
+      {modal.isVisible && (
         <div className="flex flex-shrink fixed inset-0 z-10 overflow-y-hidden overflow-x-hidden justify-center">
           <div className="fixed inset-0 w-full h-full bg-black opacity-40"></div>
           <div className="flex items-center min-h-screen px-4 py-8">
             <div className="relative max-w-fit mx-auto bg-white rounded-md shadow-lg">
               <EditStorySetting
-                id={modal.id}
+                toEdit={modal.storySetting}
                 showModal={showModal}
                 fetchData={fetchData}
               />
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
