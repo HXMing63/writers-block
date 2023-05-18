@@ -3,9 +3,12 @@ package com.muratoni.writersblock.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,5 +35,12 @@ public class StorySettingController {
     @GetMapping("/storysettings")
     public List<StorySetting> getAllStorySettings(){        
         return storySettingService.getAllStorySettings();
+    }
+
+    @PutMapping("/storysetting/{id}")
+    public ResponseEntity<StorySetting> updatePlace(@PathVariable Long id, @RequestBody StorySetting storySetting){
+        storySetting = storySettingService.updateStorySetting(id, storySetting);
+        
+        return ResponseEntity.ok(storySetting);
     }
 }

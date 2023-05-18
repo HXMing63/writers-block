@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import PlaceService from "../../services/PlaceService";
-import PlaceForm from "./PlaceForm";
+import StorySettingForm from "./StorySettingForm";
+import StorySettingService from "../../services/StorySettingService";
 
-const EditPlace = ({ toEdit, showModal, fetchData }) => {
-  const [place, setPlace] = useState({
+const EditStorySetting = ({ toEdit, showModal, fetchData }) => {
+  const [query, setQuery] = useState(toEdit.place.name);
+  const [places, setPlaces] = useState([]);
+  const [storySetting, setStorySetting] = useState({
     id: toEdit.id,
-    img: toEdit.img,
-    name: toEdit.name,
-    description: toEdit.description,
+    place: toEdit.place,
+    time: toEdit.time,
   });
 
-  const updatePlace = (e) => {
+  const updateStorySetting = (e, storySetting) => {
     e.preventDefault();
-    PlaceService.updatePlace(place.id, place)
+    
+    StorySettingService.updateStorySetting(storySetting.id, storySetting)
       .then((response) => {
         fetchData();
         showModal({ isVisible: false });
@@ -26,9 +28,17 @@ const EditPlace = ({ toEdit, showModal, fetchData }) => {
     <div className="flex flex-shrink max-w-md shadow border-b mx-auto bg-white">
       <div className="px-4 py-4">
         <div className="font-thin text-2xl tracking-wider">
-          <h1>Edit Place</h1>
+          <h1>Edit Story Setting</h1>
         </div>
-        <PlaceForm place={place} setPlace={setPlace}></PlaceForm>
+        <StorySettingForm
+          storySetting={storySetting}
+          setStorySetting={setStorySetting}
+          query={query}
+          setQuery={setQuery}
+          places={places}
+          setPlaces={setPlaces}
+          prev={query}
+        ></StorySettingForm>
         <div className="flex items-center justify-end h-14 w-full my-8 space-x-2 pt-4">
           <button
             className="rounded-md text-white font-semibold bg-red-400 px-2 py-2 hover:bg-red-700"
@@ -38,7 +48,7 @@ const EditPlace = ({ toEdit, showModal, fetchData }) => {
           </button>
           <button
             className="rounded-md text-white font-semibold bg-green-400 px-2 py-2 hover:bg-green-700"
-            onClick={updatePlace}
+            onClick={(e) => updateStorySetting(e, storySetting)}
           >
             Update
           </button>
@@ -48,4 +58,4 @@ const EditPlace = ({ toEdit, showModal, fetchData }) => {
   );
 };
 
-export default EditPlace;
+export default EditStorySetting;

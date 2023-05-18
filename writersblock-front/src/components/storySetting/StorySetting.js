@@ -14,7 +14,7 @@ const StorySetting = ({ storySetting, deleteStorySetting, editStorySetting }) =>
           </td>
           <td className="text-right py-3 px-6 align-top whitespace-nowrap font-medium">
             <a
-              onClick={(e) => editStorySetting(e, storySetting.id)}
+              onClick={(e) => editStorySetting(e, storySetting)}
               className="text-indigo-400 hover:text-indigo-800 px-4 hover:cursor-pointer"
             >
               Edit

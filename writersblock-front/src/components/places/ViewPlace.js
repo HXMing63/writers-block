@@ -9,7 +9,7 @@ const ViewPlace = () => {
   const [places, setPlaces] = useState(null);
   const [modal, showModal] = useState({
     isVisible: false,
-    place: "",
+    place: null,
   });
   const [sortOrder, setSortOrder] = useState({
     column: "",
