@@ -54,4 +54,11 @@ public class StorySettingServiceImpl implements StorySettingService {
         return storySetting;
     }
 
+    @Override
+    public boolean deleteStorySetting(Long id) {
+        StorySettingEntity storySettingEntity = storySettingRepository.findById(id).get();
+        storySettingRepository.delete(storySettingEntity);
+        return true;        
+    }
+
 }

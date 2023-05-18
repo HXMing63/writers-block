@@ -57,6 +57,13 @@ public class PlaceController {
         return ResponseEntity.ok(places);
     }
 
+    @PutMapping("/place/{id}")
+    public ResponseEntity<Place> updatePlace(@PathVariable Long id, @RequestBody Place place){
+        place = placeService.updatePlace(id, place);
+        
+        return ResponseEntity.ok(place);
+    }
+
     @DeleteMapping("/place/{id}")
     public ResponseEntity<Map<String,Boolean>> deletePlace(@PathVariable Long id){
         boolean isDeleted = false;
@@ -66,12 +73,5 @@ public class PlaceController {
         response.put("isDeleted", isDeleted);
 
         return ResponseEntity.ok(response);
-    }
-
-    @PutMapping("/place/{id}")
-    public ResponseEntity<Place> updatePlace(@PathVariable Long id, @RequestBody Place place){
-        place = placeService.updatePlace(id, place);
-        
-        return ResponseEntity.ok(place);
     }
 }

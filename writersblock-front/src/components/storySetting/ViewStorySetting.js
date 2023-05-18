@@ -34,7 +34,13 @@ const ViewStorySetting = () => {
   }, []);
 
   const deleteStorySetting = (e, id) => {
+    e.preventDefault();
 
+    StorySettingService.deleteStorySetting(id).then((res) => {
+      setStorySettings((prevElement) => {
+        return prevElement.filter((storySetting) => storySetting.id !== id);
+      });
+    });
   }
 
   const editStorySetting = (e, storySetting) => {
