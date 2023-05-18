@@ -66,13 +66,6 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public boolean deletePlace(Long id) {
-        PlaceEntity placeEntity = placeRepository.findById(id).get();
-        placeRepository.delete(placeEntity);
-        return true;
-    }
-
-    @Override
     public Place updatePlace(Long id, Place place) {
         PlaceEntity placeEntity = placeRepository.findById(id).get();
         placeEntity.setName(place.getName());
@@ -80,6 +73,13 @@ public class PlaceServiceImpl implements PlaceService {
         placeEntity.setImg(place.getImg());
         placeRepository.save(placeEntity);
         return place;
+    }
+
+    @Override
+    public boolean deletePlace(Long id) {
+        PlaceEntity placeEntity = placeRepository.findById(id).get();
+        placeRepository.delete(placeEntity);
+        return true;
     }
 
 }

@@ -11,5 +11,7 @@ public interface StorySettingService {
     List<StorySetting> getAllStorySettings();
 
     StorySetting updateStorySetting(Long id, StorySetting storySetting);
+
+    boolean deleteStorySetting(Long id);
     
 }

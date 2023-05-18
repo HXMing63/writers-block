@@ -61,6 +61,7 @@ const ViewPlace = () => {
 
   const deletePlace = (e, id) => {
     e.preventDefault();
+    
     PlaceService.deletePlace(id).then((res) => {
       setPlaces((prevElement) => {
         return prevElement.filter((place) => place.id !== id);

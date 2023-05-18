@@ -14,6 +14,10 @@ class StorySettingService {
   updateStorySetting(id, storySetting){
     return axios.put(SETTING_API_BASE_URL + "/" + id, storySetting);    
   }
+
+  deleteStorySetting(id) {
+    return axios.delete(SETTING_API_BASE_URL + "/" + id);
+  }
 }
 
 export default new StorySettingService();
