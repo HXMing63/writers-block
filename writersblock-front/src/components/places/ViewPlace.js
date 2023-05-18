@@ -9,7 +9,7 @@ const ViewPlace = () => {
   const [places, setPlaces] = useState(null);
   const [modal, showModal] = useState({
     isVisible: false,
-    id: "",
+    place: "",
   });
   const [sortOrder, setSortOrder] = useState({
     column: "",
@@ -54,9 +54,9 @@ const ViewPlace = () => {
     fetchData();
   }, []);
 
-  const editPlace = (e, inId) => {
+  const editPlace = (e, place) => {
     e.preventDefault();
-    showModal({ isVisible: true, id: inId });
+    showModal({ isVisible: true, place:place });
   };
 
   const deletePlace = (e, id) => {
@@ -129,7 +129,7 @@ const ViewPlace = () => {
           <div className="flex items-center min-h-screen px-4 py-8">
             <div className="relative max-w-fit mx-auto bg-white rounded-md shadow-lg">
               <EditPlace
-                id={modal.id}
+                toEdit={modal.place}
                 showModal={showModal}
                 fetchData={fetchData}
               />
