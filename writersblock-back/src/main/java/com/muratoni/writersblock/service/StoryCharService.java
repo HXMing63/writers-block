@@ -9,5 +9,7 @@ public interface StoryCharService {
     StoryChar createStoryChar(StoryChar place);
 
     List<StoryChar> getAllStoryChars();
+
+    StoryChar updateStoryChar(Long id, StoryChar storyChar);
     
 }
