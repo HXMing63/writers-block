@@ -24,7 +24,7 @@ const Place = ({ place, deletePlace, editPlace }) => {
           Edit
         </a>
         <a
-          onClick={(e) => deletePlace(e, place.id)}
+          onClick={(e, id) => deletePlace(e, place.id)}
           className="text-red-400 hover:text-red-800 hover:cursor-pointer"
         >
           Delete
