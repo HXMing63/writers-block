@@ -11,5 +11,7 @@ public interface StoryCharService {
     List<StoryChar> getAllStoryChars();
 
     StoryChar updateStoryChar(Long id, StoryChar storyChar);
+
+    boolean deleteStoryChar(Long id);
     
 }
