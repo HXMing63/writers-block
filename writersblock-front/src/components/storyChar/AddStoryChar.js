@@ -8,6 +8,7 @@ const AddStoryChar = () => {
     name: "",
     description: "",
     charSong: "",
+    img: "",
     fileInputKey: Date.now(),
   });
 

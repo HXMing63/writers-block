@@ -8,6 +8,7 @@ const EditStoryChar = ({ toEdit, showModal, fetchData }) => {
     name: toEdit.name,
     description: toEdit.description,
     charSong: toEdit.charSong,
+    img: toEdit.img
   });
 
   const updateStoryChar = (e, storyChar) => {
