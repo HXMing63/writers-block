@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar.js";
 import ViewPlace from "./components/places/ViewPlace";
 import ViewHome from "./components/home/ViewHome";
 import ViewStorySetting from "./components/storySetting/ViewStorySetting";
-import AddStoryChar from "./components/storyChar/AddStoryChar";
+import ViewStoryChar from "./components/storyChar/ViewStoryChar";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route index element={<ViewHome />}></Route>
         <Route path="/" element={<ViewHome />}></Route>
-        <Route path="/addStoryChar" element={<AddStoryChar />}></Route>
+        <Route path="/viewStoryChar" element={<ViewStoryChar />}></Route>
         <Route path="/viewPlace" element={<ViewPlace />}></Route>
         <Route path="/viewStorySetting" element={<ViewStorySetting />}></Route>
       </Routes>

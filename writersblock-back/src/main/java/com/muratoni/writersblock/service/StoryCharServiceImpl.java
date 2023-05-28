@@ -1,5 +1,8 @@
 package com.muratoni.writersblock.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +26,20 @@ public class StoryCharServiceImpl implements StoryCharService{
         storyCharRepository.save(storyCharEntity);
 
         return storyChar;
+    }
+
+    @Override
+    public List<StoryChar> getAllStoryChars() {
+        List<StoryCharEntity> storyCharEntities = storyCharRepository.findAll();
+        List<StoryChar> storyChars = storyCharEntities
+                .stream()
+                .map(tStoryChar -> new StoryChar(
+                    tStoryChar.getId(),
+                    tStoryChar.getName(),
+                    tStoryChar.getDescription(),
+                    tStoryChar.getCharSong(),
+                    tStoryChar.getImg()))
+                .collect(Collectors.toList());
+        return storyChars;
     }
 }
