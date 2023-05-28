@@ -16,11 +16,11 @@ import com.muratoni.writersblock.service.StoryCharService;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("api/v1")
-public class StoryCharContoller {
+public class StoryCharController {
     @Autowired
     private StoryCharService storyCharService;
 
-    public StoryCharContoller(StoryCharService storyCharService) {
+    public StoryCharController(StoryCharService storyCharService) {
         this.storyCharService = storyCharService;
     }
 
