@@ -40,6 +40,7 @@ public class StoryCharServiceImpl implements StoryCharService{
                     tStoryChar.getCharSong(),
                     tStoryChar.getImg()))
                 .collect(Collectors.toList());
+                
         return storyChars;
     }
 
@@ -51,6 +52,15 @@ public class StoryCharServiceImpl implements StoryCharService{
         storyCharEntity.setImg(storyChar.getImg());
         storyCharEntity.setCharSong(storyChar.getCharSong());
         storyCharRepository.save(storyCharEntity);
+
         return storyChar;
+    }
+
+    @Override
+    public boolean deleteStoryChar(Long id) {
+        StoryCharEntity storyCharEntity = storyCharRepository.findById(id).get();
+        storyCharRepository.delete(storyCharEntity);
+
+        return true;
     }
 }

@@ -14,6 +14,10 @@ class StoryCharService{
     updateStoryChar(id, storyChar){
         return axios.put(CHARACTER_API_BASE_URL + "/" + id, storyChar);
     }
+
+    deleteStoryChar(id){
+        return axios.delete(CHARACTER_API_BASE_URL + "/" + id);
+    }
 }
 
 export default new StoryCharService();
