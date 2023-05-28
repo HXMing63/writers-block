@@ -14,6 +14,14 @@ const ViewHome = () => {
       <div className="flex flex-row w-full max-w-md space-x-4 mt-8">
         <div
           className="flex-1 bg-white rounded-lg shadow-md p-8 flex flex-col items-center justify-center hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+          onClick={() => {navigate("/addStoryChar")}}
+        >
+          <h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
+            Character
+          </h2>
+        </div>
+        <div
+          className="flex-1 bg-white rounded-lg shadow-md p-8 flex flex-col items-center justify-center hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
           onClick={() => {navigate("/viewPlace")}}
         >
           <h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
