@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import AddStoryChar from "./AddStoryChar";
 import StoryCharService from "../../services/StoryCharService";
 import StoryChar from "./StoryChar";
+import EditStoryChar from "./EditStoryChar";
 
 const ViewStoryChar = () => {
   const [loading, setLoading] = useState(true);
   const [storyChars, setStoryChars] = useState([]);
+  const [modal, showModal] = useState({
+    isVisible: false,
+    place: null,
+  });
   const [sortOrder, setSortOrder] = useState({
     column: "",
     direction: "asc",
@@ -47,9 +52,17 @@ const ViewStoryChar = () => {
   };
 
   const editStoryChar = (e, storyChar) => {
+    e.preventDefault();
+    showModal({ isVisible: true, storyChar: storyChar });
   };
 
   const deleteStoryChar = (e, id) => {
+    e.preventDefault();
+    StoryCharService.deleteStoryChar(id).then((res) => {
+      setStoryChars((prevElement) => {
+        return prevElement.filter((storyChar) => storyChar.id !== id);
+      });
+    });
   };
 
   useEffect(() => {
@@ -120,6 +133,20 @@ const ViewStoryChar = () => {
           <AddStoryChar fetchData={fetchData} />
         </div>
       </div>
+      {modal.isVisible && (
+        <div className="flex flex-shrink fixed inset-0 z-10 overflow-y-hidden overflow-x-hidden justify-center">
+          <div className="fixed inset-0 w-full h-full bg-black opacity-40"></div>
+          <div className="flex items-center min-h-screen px-4 py-8">
+            <div className="relative max-w-fit mx-auto bg-white rounded-md shadow-lg">
+              <EditStoryChar
+                toEdit={modal.storyChar}
+                showModal={showModal}
+                fetchData={fetchData}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

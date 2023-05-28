@@ -10,6 +10,10 @@ class StoryCharService{
     getStoryChars(){
         return axios.get(CHARACTER_API_BASE_URL + "s");
     }
+
+    updateStoryChar(id, storyChar){
+        return axios.put(CHARACTER_API_BASE_URL + "/" + id, storyChar);
+    }
 }
 
 export default new StoryCharService();

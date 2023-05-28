@@ -42,4 +42,15 @@ public class StoryCharServiceImpl implements StoryCharService{
                 .collect(Collectors.toList());
         return storyChars;
     }
+
+    @Override
+    public StoryChar updateStoryChar(Long id, StoryChar storyChar) {
+        StoryCharEntity storyCharEntity = storyCharRepository.findById(id).get();
+        storyCharEntity.setName(storyChar.getName());
+        storyCharEntity.setDescription(storyChar.getDescription());
+        storyCharEntity.setImg(storyChar.getImg());
+        storyCharEntity.setCharSong(storyChar.getCharSong());
+        storyCharRepository.save(storyCharEntity);
+        return storyChar;
+    }
 }
