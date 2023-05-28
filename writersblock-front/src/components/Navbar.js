@@ -49,17 +49,6 @@ const Navbar = () => {
             <li>
               <a
                 onClick={() => {
-                  navigate("/viewStoryChar");
-                  setIsOpen(false);
-                }}
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:cursor-pointer"
-              >
-                View Character
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => {
                   navigate("/viewPlace");
                   setIsOpen(false);
                 }}

@@ -10,7 +10,7 @@ const EditPlace = ({ toEdit, showModal, fetchData }) => {
     description: toEdit.description,
   });
 
-  const updatePlace = (e, place) => {
+  const updatePlace = (e) => {
     e.preventDefault();
     PlaceService.updatePlace(place.id, place)
       .then((response) => {
@@ -38,7 +38,7 @@ const EditPlace = ({ toEdit, showModal, fetchData }) => {
           </button>
           <button
             className="rounded-md text-white font-semibold bg-green-400 px-2 py-2 hover:bg-green-700"
-            onClick={(e) => updatePlace(e, place)}
+            onClick={updatePlace}
           >
             Update
           </button>
