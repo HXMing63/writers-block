@@ -1,8 +1,10 @@
 package com.muratoni.writersblock.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.muratoni.writersblock.model.StorySetting;
@@ -38,6 +41,41 @@ public class StorySettingController {
     @GetMapping("/storysettings")
     public List<StorySetting> getAllStorySettings(){        
         return storySettingService.getAllStorySettings();
+    }
+
+    @GetMapping("/storysettings/{name}")
+    public List<StorySetting> getStorySettingsByName(@PathVariable("name") String name){
+        return storySettingService.getStorySettingsByName(name);
+    }
+
+    @GetMapping("/storysettings/except/{ids}")
+    // public List<StoryChar> getAllStoryCharsExceptArgs(@RequestParam("ids") String ids){
+    public List<StorySetting> getStoryCharsExcept(@PathVariable("ids") String ids){
+        List<Long> tIds = Arrays.stream(ids.split(",")).map(Long::parseLong).collect(Collectors.toList());
+        // System.out.println("---ids: " + ids);
+        // try {
+        //     tIds = objMapper.readValue(ids, new TypeReference<List<Long>>() {});
+        // } catch (JsonMappingException e) {
+        //     e.printStackTrace();
+        // } catch (JsonProcessingException e) {
+        //     e.printStackTrace();
+        // }
+        return storySettingService.getStorySettingsExcept(tIds);
+        // return storySettingService.getAllStoryCharsExceptArgs(ids);
+    }
+
+    @GetMapping("/storysettings/name_except")
+    public List<StorySetting> getStoryCharsByNameExcept(@RequestParam("name") String name, @RequestParam("ids") String ids){
+        // System.out.println("----------name: " + name + "|ids: " + ids);
+        List<Long> tIds = null;
+
+        if (ids.length() == 0){
+            return this.getStorySettingsByName(name);
+        } else {
+            tIds = Arrays.stream(ids.split(",")).map(Long::parseLong).collect(Collectors.toList());
+        }
+
+        return storySettingService.getStorySettingsByNameExcept(name, tIds);
     }
 
     @PutMapping("/storysetting/{id}")

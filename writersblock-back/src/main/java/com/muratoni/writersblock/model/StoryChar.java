@@ -1,5 +1,7 @@
 package com.muratoni.writersblock.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,7 @@ public class StoryChar {
     private String description;
     private String charSong;
     private String img;
+    private List<Chapter> chapters;
 
     public long getId() {
         return id;

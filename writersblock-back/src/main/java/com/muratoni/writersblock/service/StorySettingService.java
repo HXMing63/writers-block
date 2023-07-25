@@ -13,5 +13,11 @@ public interface StorySettingService {
     StorySetting updateStorySetting(Long id, StorySetting storySetting);
 
     boolean deleteStorySetting(Long id);
+
+    List<StorySetting> getStorySettingsByName(String name);
+
+    List<StorySetting> getStorySettingsExcept(List<Long> tIds);
+
+    List<StorySetting> getStorySettingsByNameExcept(String name, List<Long> tIds);
     
 }

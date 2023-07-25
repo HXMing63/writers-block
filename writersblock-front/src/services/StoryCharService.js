@@ -11,6 +11,23 @@ class StoryCharService{
         return axios.get(CHARACTER_API_BASE_URL + "s");
     }
 
+    getStoryCharsByName(name){
+        return axios.get(CHARACTER_API_BASE_URL + "s/" + name);
+    }
+
+    getStoryCharsExcept(ids){
+        const newIds = ids.join(",");
+        return axios.get(CHARACTER_API_BASE_URL + "s/except/" + newIds);
+    }
+
+    getStoryCharsByNameExcept(name, ids){
+        const newIds = ids.join(",");
+        return axios.get(CHARACTER_API_BASE_URL + "s/name_except", {params: {
+            name: name,
+            ids: newIds
+        }});
+    }
+
     updateStoryChar(id, storyChar){
         return axios.put(CHARACTER_API_BASE_URL + "/" + id, storyChar);
     }
