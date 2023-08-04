@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.muratoni.writersblock.entity.ChapterEntity;
 import com.muratoni.writersblock.entity.StoryCharEntity;
@@ -46,6 +45,32 @@ public class ChapterServiceImpl implements ChapterService {
         ChapterEntity tRes = chapterRepository.save(chapterEntity);
 
         return ChapterMapper.toDto(tRes);
+    }
+
+    @Override
+    public List<Chapter> getAllChapters() {
+        List<ChapterEntity> chapterEntities = chapterRepository.findAll();
+        List<Chapter> chapters = chapterEntities
+            .stream()
+            .map((tChapter) -> new Chapter(
+                tChapter.getId(), 
+                tChapter.getName(), 
+                tChapter.getContent(),
+                tChapter.getStoryCharEntities()
+                    .stream()
+                    .map(tStoryChar -> StoryCharMapper.toDto(tStoryChar))
+                    .collect(Collectors.toList()), 
+                tChapter.getStorySettingEntities()
+                    .stream()
+                    .map(tStorySetting -> StorySettingMapper.toDto(tStorySetting))
+                    .collect(Collectors.toList())
+            )).collect(Collectors.toList());
+
+        System.out.println("---------");
+        System.out.println(chapters);
+        System.out.println("-------------------------");
+
+        return chapters;
     }
 
 }

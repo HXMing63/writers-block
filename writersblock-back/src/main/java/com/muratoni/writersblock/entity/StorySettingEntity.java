@@ -23,7 +23,7 @@ public class StorySettingEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "place_id")
     private PlaceEntity placeEntity;
     private String time;

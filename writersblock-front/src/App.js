@@ -5,6 +5,7 @@ import ViewPlace from "./components/places/ViewPlace";
 import ViewHome from "./components/home/ViewHome";
 import ViewStorySetting from "./components/storySetting/ViewStorySetting";
 import ViewStoryChar from "./components/storyChar/ViewStoryChar";
+import ViewChapter from "./components/chapter/ViewChapter";
 import AddChapter from "./components/chapter/AddChapter";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route index element={<ViewHome />}></Route>
         <Route path="/" element={<ViewHome />}></Route>
+        <Route path="/viewChapter" element={<ViewChapter/>}></Route>
         <Route path="/addChapter" element={<AddChapter/>}></Route>
         <Route path="/viewStoryChar" element={<ViewStoryChar />}></Route>
         <Route path="/viewPlace" element={<ViewPlace />}></Route>

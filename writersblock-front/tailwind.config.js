@@ -4,7 +4,17 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing:{
+        '160': '40rem',
+        '168': '42rem',
+        '176': '44rem',
+        '192': '48rem'
+      },
+      zIndex:{
+        '100': '100'
+      }
+    },
   },
   plugins: [
     require('tailwind-scrollbar'),

@@ -13,6 +13,7 @@ public class StorySettingMapper {
 
         StorySetting storySetting = new StorySetting();
         BeanUtils.copyProperties(storySettingEntity, storySetting);
+        storySetting.setPlace(PlaceMapper.toDto(storySettingEntity.getPlaceEntity()));
 
         return storySetting;
     }
@@ -24,6 +25,7 @@ public class StorySettingMapper {
 
         StorySettingEntity storySettingEntity = new StorySettingEntity();
         BeanUtils.copyProperties(storySetting, storySettingEntity);
+        storySettingEntity.setPlaceEntity(PlaceMapper.toEntity(storySetting.getPlace()));
 
         return storySettingEntity;
     }

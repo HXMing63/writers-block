@@ -14,23 +14,4 @@ public class StorySetting {
     private Place place;
     private String time;
     private List<Chapter> chapters;
-
-    public long getId(){
-        return id;
-    }
-    public void setId(long id){
-        this.id = id;
-    }
-    public Place getPlace() {
-        return place;
-    }
-    public void setPlace(Place place) {
-        this.place = place;
-    }
-    public String getTime() {
-        return time;
-    }
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

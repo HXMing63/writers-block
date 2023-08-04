@@ -6,10 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import com.muratoni.writersblock.entity.ChapterEntity;
 import com.muratoni.writersblock.entity.StoryCharEntity;
 import com.muratoni.writersblock.mapper.ChapterMapper;
-import com.muratoni.writersblock.model.Chapter;
 import com.muratoni.writersblock.model.StoryChar;
 import com.muratoni.writersblock.repository.StoryCharRepository;
 
