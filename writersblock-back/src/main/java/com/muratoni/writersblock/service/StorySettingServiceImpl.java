@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import com.muratoni.writersblock.entity.StoryCharEntity;
 import com.muratoni.writersblock.entity.StorySettingEntity;
 import com.muratoni.writersblock.mapper.ChapterMapper;
 import com.muratoni.writersblock.mapper.PlaceMapper;
@@ -16,18 +15,16 @@ import com.muratoni.writersblock.repository.StorySettingRepository;
 @Service
 public class StorySettingServiceImpl implements StorySettingService {
     private StorySettingRepository storySettingRepository;
-    private PlaceMapper placeMapper;
 
     public StorySettingServiceImpl(StorySettingRepository storySettingRepository, PlaceMapper placeMapper) {
         this.storySettingRepository = storySettingRepository;
-        this.placeMapper = placeMapper;
     }
 
     @Override
     public StorySetting createStorySetting(StorySetting storySetting) {
         StorySettingEntity storySettingEntity = new StorySettingEntity();
         BeanUtils.copyProperties(storySetting, storySettingEntity);
-        storySettingEntity.setPlaceEntity(placeMapper.toEntity(storySetting.getPlace()));
+        storySettingEntity.setPlaceEntity(PlaceMapper.toEntity(storySetting.getPlace()));
 
         storySettingRepository.save(storySettingEntity);
         return storySetting;
@@ -40,7 +37,7 @@ public class StorySettingServiceImpl implements StorySettingService {
                 .stream()
                 .map(tStorySetting -> new StorySetting(
                         tStorySetting.getId(),
-                        placeMapper.toDto(tStorySetting.getPlaceEntity()),
+                        PlaceMapper.toDto(tStorySetting.getPlaceEntity()),
                         tStorySetting.getTime(),
                         tStorySetting.getChapters()
                                 .stream()
@@ -58,7 +55,7 @@ public class StorySettingServiceImpl implements StorySettingService {
                 .stream()
                 .map(tStorySetting -> new StorySetting(
                         tStorySetting.getId(),
-                        placeMapper.toDto(tStorySetting.getPlaceEntity()),
+                        PlaceMapper.toDto(tStorySetting.getPlaceEntity()),
                         tStorySetting.getTime(),
                         tStorySetting.getChapters()
                                 .stream()
@@ -76,7 +73,7 @@ public class StorySettingServiceImpl implements StorySettingService {
                 .stream()
                 .map(tStorySetting -> new StorySetting(
                         tStorySetting.getId(),
-                        placeMapper.toDto(tStorySetting.getPlaceEntity()),
+                        PlaceMapper.toDto(tStorySetting.getPlaceEntity()),
                         tStorySetting.getTime(),
                         tStorySetting.getChapters()
                                 .stream()
@@ -94,7 +91,7 @@ public class StorySettingServiceImpl implements StorySettingService {
                 .stream()
                 .map(tStorySetting -> new StorySetting(
                         tStorySetting.getId(),
-                        placeMapper.toDto(tStorySetting.getPlaceEntity()),
+                        PlaceMapper.toDto(tStorySetting.getPlaceEntity()),
                         tStorySetting.getTime(),
                         tStorySetting.getChapters()
                                 .stream()
@@ -108,7 +105,7 @@ public class StorySettingServiceImpl implements StorySettingService {
     @Override
     public StorySetting updateStorySetting(Long id, StorySetting storySetting) {
         StorySettingEntity storySettingEntity = storySettingRepository.findById(id).get();
-        storySettingEntity.setPlaceEntity(placeMapper.toEntity(storySetting.getPlace()));
+        storySettingEntity.setPlaceEntity(PlaceMapper.toEntity(storySetting.getPlace()));
         storySettingEntity.setTime(storySetting.getTime());
         storySettingRepository.save(storySettingEntity);
 

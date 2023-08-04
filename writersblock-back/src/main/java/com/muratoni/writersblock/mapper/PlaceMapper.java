@@ -7,7 +7,7 @@ import com.muratoni.writersblock.model.Place;
 
 @Component
 public class PlaceMapper {
-    public PlaceEntity toEntity(Place place) {
+    public static PlaceEntity toEntity(Place place) {
         if (place == null) {
             return null;
         }
@@ -21,7 +21,7 @@ public class PlaceMapper {
         return placeEntity;
     }
 
-    public Place toDto(PlaceEntity placeEntity) {
+    public static Place toDto(PlaceEntity placeEntity) {
         if (placeEntity == null) {
             return null;
         }

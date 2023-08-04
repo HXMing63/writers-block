@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-4">
+    <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-4 sticky top-0 z-100">
       <div className="flex items-center flex-shrink-0 text-white mr-6 hover:cursor-pointer" onClick={() => {navigate("/")}}>
         <span className="font-semibold text-xl tracking-tight">
           Writer's Block
@@ -31,7 +31,7 @@ const Navbar = () => {
 
           <ul
             id="dropdown-menu"
-            className={`absolute mt-1 right-0 z-50 w-40 py-2 bg-white rounded-md shadow-lg ${
+            className={`absolute mt-1 right-0 w-40 py-2 bg-white rounded-md shadow-lg ${
               isOpen ? "" : "hidden"
             } `}
           >
@@ -49,12 +49,12 @@ const Navbar = () => {
             <li>
               <a
                 onClick={() => {
-                  navigate("/addChapter");
+                  navigate("/viewChapter");
                   setIsOpen(false);
                 }}
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:cursor-pointer"
               >
-                Add Chapter
+                View Chapter
               </a>
             </li>
             <li>
