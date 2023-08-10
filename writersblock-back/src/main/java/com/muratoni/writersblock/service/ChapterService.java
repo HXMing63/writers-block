@@ -9,5 +9,7 @@ public interface ChapterService {
     Chapter createChapter(Chapter chapter);
 
     List<Chapter> getAllChapters();
+
+    Chapter updateChapter(Chapter chapter);
     
 }

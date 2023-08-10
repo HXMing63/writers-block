@@ -10,6 +10,10 @@ class ChapterService {
   getChapters(){
     return axios.get(CHAPTER_API_BASE_URL + "s");
   }
+
+  updateChapter(chapter){
+    return axios.put(CHAPTER_API_BASE_URL, chapter);
+  }
 }
 
 export default new ChapterService();
