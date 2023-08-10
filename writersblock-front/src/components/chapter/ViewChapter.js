@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Chapter from "./Chapter";
 import ChapterService from "../../services/ChapterService";
-import { useNavigate } from "react-router-dom";
+import AddChapter from "./AddChapter";
+import ModalTemplate from "../assets/components/ModalTemplate";
+import EditChapter from "./EditChapter";
 
 const ViewChapter = () => {
-	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 	const [chapters, setChapters] = useState([]);
+	const [showAdd, setShowAdd] = useState(false);
+	const [showEdit, setShowEdit] = useState({
+		isVisible: false,
+		chapter: null,
+	});
 
-	const editChapter = () => {};
+	const editChapter = (chapter) => {
+		setShowEdit({ isVisible: true, chapter: chapter });
+	};
 
 	const deleteChapter = () => {};
 
@@ -18,8 +26,6 @@ const ViewChapter = () => {
 		try {
 			const response = await ChapterService.getChapters();
 			setChapters(response.data);
-			// console.log(response);
-			// console.log(response.data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -28,15 +34,8 @@ const ViewChapter = () => {
 	};
 
 	useEffect(() => {
-		console.log("using effect...");
 		fetchData();
-		// console.log(chapters);
-		// console.log(isLoading);
 	}, []);
-
-	useEffect(() => {
-		console.log(chapters);
-	}, [chapters]);
 
 	return (
 		<div className="mx-auto overflow-hidden max-h-full">
@@ -44,7 +43,7 @@ const ViewChapter = () => {
 				View Chapter
 				<button
 					className="ml-auto bg-emerald-400 hover:bg-emerald-700 text-white font-thin text-base tracking-wider py-2 px-4 rounded"
-					onClick={() => navigate("/addChapter")}
+					onClick={() => setShowAdd(true)}
 				>
 					Add Chapter
 				</button>
@@ -63,12 +62,13 @@ const ViewChapter = () => {
 					<tbody className="overflow-y-auto divide-y-2 divide-gray-100">
 						{isLoading ? (
 							<tr>
-								<td>Loading...</td>
+								<td className="font-thin text-base tracking-wider">
+									Loading...
+								</td>
 							</tr>
 						) : (
 							chapters &&
 							chapters.map((chapter) => {
-								console.log(chapter);
 								return (
 									<Chapter
 										chapter={chapter}
@@ -82,6 +82,19 @@ const ViewChapter = () => {
 					</tbody>
 				</table>
 			</div>
+			<ModalTemplate isOpen={showAdd} onClose={() => setShowAdd(false)}>
+				<AddChapter fetchData={fetchData} setShowAdd={setShowAdd} />
+			</ModalTemplate>
+			<ModalTemplate
+				isOpen={showEdit.isVisible}
+				onClose={() => setShowEdit(false)}
+			>
+				<EditChapter
+					chapterArg={showEdit.chapter}
+					fetchData={fetchData}
+					setShowEdit={setShowEdit}
+				/>
+			</ModalTemplate>
 		</div>
 	);
 };

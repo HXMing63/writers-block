@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import ChapterFormFields from "./ChapterFormFields";
 import PlusIcon from "../assets/svg/PlusIcon";
 import MinusIcon from "../assets/svg/MinusIcon";
@@ -7,14 +6,15 @@ import ChapterCharMultiSelect from "./ChapterCharMultiSelect";
 import ChapterSettingMultiSelect from "./ChapterSettingMultiSelect";
 import ChapterService from "../../services/ChapterService";
 
-const AddChapter = ({ fetchData, setShowAdd }) => {
+const EditChapter = ({ chapterArg, fetchData, setShowEdit }) => {    
 	const [charModal, setCharModal] = useState(false);
 	const [settingModal, setSettingModal] = useState(false);
 	const [chapter, setChapter] = useState({
-		name: "",
-		content: "",
-		storyChars: [],
-		storySettings: [],
+		id: chapterArg.id || "",
+		name: chapterArg.name || "",
+		content: chapterArg.content || "",
+		storyChars: chapterArg.storyChars || [],
+		storySettings: chapterArg.storySettings || []
 	});
 
 	const deleteRow = (key, target) => {
@@ -25,18 +25,17 @@ const AddChapter = ({ fetchData, setShowAdd }) => {
 	};
 
 	const saveChapter = () => {
-		ChapterService.saveChapter(chapter).then(() => {
+		ChapterService.updateChapter(chapter).then(() => {
 			fetchData();
-		});
-		
-		setShowAdd(false);
+		});		
+		setShowEdit(false);
 	};
 
 	return (
 		<div className="flex flex-col md:flex-row">
 			<div className="w-full md:w-2/3 container mx-auto p-4">
 				<div className="p-4 font-thin text-2xl tracking-wider flex justify-between items-center">
-					<h1>Add New Chapter</h1>
+					<h1>Edit Chapter</h1>
 					<button
 						className="bg-emerald-400 hover:bg-emerald-700 text-white font-thin text-2xl tracking-wider py-2 px-4 rounded"
 						onClick={() => saveChapter()}
@@ -158,4 +157,4 @@ const AddChapter = ({ fetchData, setShowAdd }) => {
 	);
 };
 
-export default AddChapter;
+export default EditChapter;

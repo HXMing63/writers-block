@@ -33,7 +33,7 @@ const Chapter = ({ chapter, editChapter, deleteChapter }) => {
 			<td className="text-right py-3 px-6 font-medium w-2/12">
 				<a
 					className="text-indigo-400 hover:text-indigo-800 px-4 hover:cursor-pointer"
-					onClick={() => editChapter()}
+					onClick={() => editChapter(chapter)}
 				>
 					Edit
 				</a>
