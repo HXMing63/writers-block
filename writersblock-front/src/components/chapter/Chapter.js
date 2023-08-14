@@ -39,7 +39,7 @@ const Chapter = ({ chapter, editChapter, deleteChapter }) => {
 				</a>
 				<a
 					className="text-red-400 hover:text-red-800 hover:cursor-pointer"
-					onClick={() => deleteChapter()}
+					onClick={() => deleteChapter(chapter.id)}
 				>
 					Delete
 				</a>

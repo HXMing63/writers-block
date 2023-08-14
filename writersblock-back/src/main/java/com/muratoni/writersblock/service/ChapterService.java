@@ -11,5 +11,7 @@ public interface ChapterService {
     List<Chapter> getAllChapters();
 
     Chapter updateChapter(Chapter chapter);
+
+    boolean deleteChapter(Long id);
     
 }

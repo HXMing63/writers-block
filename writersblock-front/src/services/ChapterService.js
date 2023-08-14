@@ -14,6 +14,11 @@ class ChapterService {
   updateChapter(chapter){
     return axios.put(CHAPTER_API_BASE_URL, chapter);
   }
+
+  deleteChapter(id){
+    console.log(`id: ${id}`);
+    return axios.delete(CHAPTER_API_BASE_URL + "/" + id)
+  }
 }
 
 export default new ChapterService();

@@ -46,4 +46,11 @@ public class ChapterServiceImpl implements ChapterService {
         return ChapterMapper.toDto(res);
     }
 
+    @Override
+    public boolean deleteChapter(Long id) {
+        ChapterEntity chapterEntity = chapterRepository.findById(id).get();
+        chapterRepository.delete(chapterEntity);
+
+        return true;
+    }
 }
