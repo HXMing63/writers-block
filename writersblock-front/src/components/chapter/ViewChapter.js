@@ -18,7 +18,14 @@ const ViewChapter = () => {
 		setShowEdit({ isVisible: true, chapter: chapter });
 	};
 
-	const deleteChapter = () => {};
+	const deleteChapter = (id) => {
+		console.log(id);
+		ChapterService.deleteChapter(id).then(() => {
+			setChapters((prevElement) => {
+				return prevElement.filter((chapter) => chapter.id !== id);
+			})
+		});
+	};
 
 	const fetchData = async () => {
 		setIsLoading(true);
