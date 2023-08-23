@@ -14,7 +14,7 @@ const Place = ({ place, deletePlace, editPlace }) => {
         <div>{place.description}</div>
       </td>
       <td className="py-3 px-6 whitespace-nowrap">
-        <div>{place.img}</div>
+        <div>{place.img ? place.img.name : "Empty"}</div>
       </td>
       <td className="text-right py-3 px-6 whitespace-nowrap font-medium">
         <a

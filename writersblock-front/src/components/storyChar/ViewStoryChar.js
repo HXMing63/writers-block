@@ -44,7 +44,6 @@ const ViewStoryChar = () => {
     try {
       const response = await StoryCharService.getStoryChars();
       setStoryChars(response.data);
-      //   console.log(response.data);
     } catch (error) {
       console.log(error);
     }

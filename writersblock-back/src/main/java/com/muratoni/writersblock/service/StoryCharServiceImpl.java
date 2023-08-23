@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.muratoni.writersblock.entity.StoryCharEntity;
 import com.muratoni.writersblock.mapper.ChapterMapper;
+import com.muratoni.writersblock.mapper.MyImageMapper;
 import com.muratoni.writersblock.model.StoryChar;
 import com.muratoni.writersblock.repository.StoryCharRepository;
 
@@ -23,6 +24,7 @@ public class StoryCharServiceImpl implements StoryCharService {
     public StoryChar createStoryChar(StoryChar storyChar) {
         StoryCharEntity storyCharEntity = new StoryCharEntity();
         BeanUtils.copyProperties(storyChar, storyCharEntity);
+        storyCharEntity.setImg(MyImageMapper.toEntity(storyChar.getImg()));
 
         storyCharRepository.save(storyCharEntity);
 
@@ -39,7 +41,7 @@ public class StoryCharServiceImpl implements StoryCharService {
                         tStoryChar.getName(),
                         tStoryChar.getDescription(),
                         tStoryChar.getCharSong(),
-                        tStoryChar.getImg(),
+                        MyImageMapper.toDto(tStoryChar.getImg()),
                         tStoryChar.getChapters()
                                 .stream()
                                 .map(tChapter -> ChapterMapper.toDto(tChapter))
@@ -59,7 +61,7 @@ public class StoryCharServiceImpl implements StoryCharService {
                         tStoryChar.getName(),
                         tStoryChar.getDescription(),
                         tStoryChar.getCharSong(),
-                        tStoryChar.getImg(),
+                        MyImageMapper.toDto(tStoryChar.getImg()),
                         tStoryChar.getChapters()
                                 .stream()
                                 .map(tChapter -> ChapterMapper.toDto(tChapter))
@@ -79,7 +81,7 @@ public class StoryCharServiceImpl implements StoryCharService {
                         tStoryChar.getName(),
                         tStoryChar.getDescription(),
                         tStoryChar.getCharSong(),
-                        tStoryChar.getImg(),
+                        MyImageMapper.toDto(tStoryChar.getImg()),
                         tStoryChar.getChapters()
                                 .stream()
                                 .map(tChapter -> ChapterMapper.toDto(tChapter))
@@ -99,7 +101,7 @@ public class StoryCharServiceImpl implements StoryCharService {
                         tStoryChar.getName(),
                         tStoryChar.getDescription(),
                         tStoryChar.getCharSong(),
-                        tStoryChar.getImg(),
+                        MyImageMapper.toDto(tStoryChar.getImg()),
                         tStoryChar.getChapters()
                                 .stream()
                                 .map(tChapter -> ChapterMapper.toDto(tChapter))
@@ -114,7 +116,7 @@ public class StoryCharServiceImpl implements StoryCharService {
         StoryCharEntity storyCharEntity = storyCharRepository.findById(id).get();
         storyCharEntity.setName(storyChar.getName());
         storyCharEntity.setDescription(storyChar.getDescription());
-        storyCharEntity.setImg(storyChar.getImg());
+        storyCharEntity.setImg(MyImageMapper.toEntity(storyChar.getImg()));
         storyCharEntity.setCharSong(storyChar.getCharSong());
         storyCharRepository.save(storyCharEntity);
 

@@ -1,17 +1,28 @@
 import React from "react";
 
 const StoryCharForm = ({ storyChar, setStoryChar }) => {
-  const handleChange = (e) => {
-    let val;
+	const handleChange = (e) => {
+		setStoryChar({ ...storyChar, [e.target.name]: e.target.value });
+	};
 
-    if (e.target.files) {
-      val = e.target.files[0].name;
-    } else {
-      val = e.target.value;
-    }
+	const handleImgChange = (e) => {
+		const file = e.target.files[0];
 
-    setStoryChar({ ...storyChar, [e.target.name]: val });
-  };
+		if (file) {
+			const reader = new FileReader();
+
+			reader.onload = (event) => {
+        const imgData = new  Uint8Array(event.target.result);
+
+				setStoryChar({
+					...storyChar,
+					img: { name: file.name, data: Array.from(imgData) },
+				});
+			};
+
+      reader.readAsArrayBuffer(file);
+		}
+	};
 
   return (
     <>
@@ -60,7 +71,7 @@ const StoryCharForm = ({ storyChar, setStoryChar }) => {
             type="file"
             name="img"
             key={storyChar.fileInputKey}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => handleImgChange(e)}
             accept=".png,.jpg,.jpeg"
           ></input>
         </div>
