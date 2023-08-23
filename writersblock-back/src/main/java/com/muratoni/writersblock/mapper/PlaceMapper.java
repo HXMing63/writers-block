@@ -16,7 +16,7 @@ public class PlaceMapper {
         placeEntity.setId(place.getId());
         placeEntity.setName(place.getName());
         placeEntity.setDescription(place.getDescription());
-        placeEntity.setImg(place.getImg());
+        placeEntity.setImg(MyImageMapper.toEntity(place.getImg()));
 
         return placeEntity;
     }
@@ -30,7 +30,7 @@ public class PlaceMapper {
         place.setId(placeEntity.getId());
         place.setName(placeEntity.getName());
         place.setDescription(placeEntity.getDescription());
-        place.setImg(placeEntity.getImg());
+        place.setImg(MyImageMapper.toDto(placeEntity.getImg()));
 
         return place;
     }

@@ -5,14 +5,18 @@ import PlaceForm from "./PlaceForm";
 const AddPlace = ({ fetchData }) => {
   const [place, setPlace] = useState({
     id: "",
-    img: "",
     name: "",
     description: "",
     fileInputKey: Date.now(),
+    img: {
+      name: "",
+      data: null
+    }
   });
 
   const savePlace = (e) => {
     e.preventDefault();
+    
     PlaceService.savePlace(place)
       .then((response) => {
         console.log(response);

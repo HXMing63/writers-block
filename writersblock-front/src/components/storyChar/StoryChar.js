@@ -16,7 +16,7 @@ const StoryChar = ({ storyChar, editStoryChar, deleteStoryChar}) => {
         <div>{storyChar.charSong}</div>
       </td>
       <td className="py-3 px-6 w-1/10 whitespace-wrap">
-        <div>{storyChar.img}</div>
+        <div>{storyChar.img ? storyChar.img.name : "Empty"}</div>
       </td>
       <td className="text-right py-3 px-6 w-1/10 whitespace-wrap font-medium">
         <a
