@@ -12,7 +12,7 @@ const PlaceForm = ({ place, setPlace }) => {
 			const reader = new FileReader();
 
 			reader.onload = (event) => {
-        const imgData = new  Uint8Array(event.target.result);
+				const imgData = new Uint8Array(event.target.result);
 
 				setPlace({
 					...place,
@@ -20,7 +20,7 @@ const PlaceForm = ({ place, setPlace }) => {
 				});
 			};
 
-      reader.readAsArrayBuffer(file);
+			reader.readAsArrayBuffer(file);
 		}
 	};
 
