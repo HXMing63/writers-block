@@ -28,7 +28,7 @@ const EditChapter = ({ chapterArg, fetchData, setShowEdit }) => {
 		ChapterService.updateChapter(chapter).then(() => {
 			fetchData();
 		});		
-		setShowEdit(false);
+		setShowEdit({isVisible: false});
 	};
 
 	return (

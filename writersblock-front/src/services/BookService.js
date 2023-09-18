@@ -10,6 +10,10 @@ class BookService{
     getBooks(){
         return axios.get(BOOK_API_BASE_URL + "s");
     }
+
+    updateBook(book){
+        return axios.put(BOOK_API_BASE_URL, book);
+    }
 }
 
 export default new BookService();

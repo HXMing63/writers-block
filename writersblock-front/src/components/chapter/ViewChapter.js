@@ -94,7 +94,7 @@ const ViewChapter = () => {
 			</ModalTemplate>
 			<ModalTemplate
 				isOpen={showEdit.isVisible}
-				onClose={() => setShowEdit(false)}
+				onClose={() => setShowEdit({isVisible: false})}
 			>
 				<EditChapter
 					chapterArg={showEdit.chapter}
