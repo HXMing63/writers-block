@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BookForm from "./BookForm";
 import BookService from "../../services/BookService";
 
-const AddBook = () => {
+const AddBook = ({ fetchData }) => {
 	const [book, setBook] = useState({
 		name: "",
 		synopsis: "",
@@ -18,7 +18,7 @@ const AddBook = () => {
 		BookService.saveBook(book)
 			.then((response) => {
 				console.log(response);
-				// fetchData();
+				fetchData();
 				resetForm();
 			})
 			.catch((err) => {
