@@ -1,5 +1,8 @@
 package com.muratoni.writersblock.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.muratoni.writersblock.entity.BookEntity;
@@ -22,6 +25,17 @@ public class BookServiceImpl implements BookService{
         BookEntity tRes = bookRepository.save(bookEntity);
 
         return BookMapper.toDto(tRes);
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        List<BookEntity> bookEntities = bookRepository.findAll();
+        List<Book> books = bookEntities
+            .stream()
+            .map((tBook) -> BookMapper.toDto(tBook))
+            .collect(Collectors.toList());
+
+        return books;
     }
     
 }

@@ -6,6 +6,10 @@ class BookService{
     saveBook(book){
         return axios.post(BOOK_API_BASE_URL, book);
     }
+
+    getBooks(){
+        return axios.get(BOOK_API_BASE_URL + "s");
+    }
 }
 
 export default new BookService();
