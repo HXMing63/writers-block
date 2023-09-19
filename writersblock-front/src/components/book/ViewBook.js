@@ -30,6 +30,15 @@ const ViewBook = () => {
 		setShowEdit({ isVisible: true, book: book });
 	};
 
+	const deleteBook = (id) => {
+		console.log(`id: ${id}`)
+		BookService.deleteBook(id).then(() => {
+			setBooks((prevElement) => {
+				return prevElement.filter((book) => book.id !== id);
+			})
+		});
+	}
+
 	const formatToAccordion = (book) => {
 		return (
 			<div className="divide-y-2">
@@ -51,19 +60,29 @@ const ViewBook = () => {
 					</label>
 					<p>{book.cover.name}</p>
 				</div>
-				<div className="w-full flex justify-end space-x-2 pt-4">
-					<button
-						className="rounded-md text-white font-semibold bg-orange-400 px-2 py-2 hover:bg-orange-700"
-						// onClick={resetForm}
-					>
-						View
-					</button>
-					<button
-						className="rounded-md text-white font-semibold bg-indigo-400 px-2 py-2 hover:bg-indigo-700"
-						onClick={(e) => editBook(book)}
-					>
-						Edit
-					</button>
+				<div className="pt-4 flex">
+					<div className="">
+						<button
+							className="rounded-md text-white font-semibold bg-red-400 px-2 py-2 hover:bg-red-700"
+							onClick={() => deleteBook(book.id)}
+						>
+							Delete
+						</button>
+					</div>
+					<div className="w-full space-x-2 flex justify-end">
+						<button
+							className="rounded-md text-white font-semibold bg-orange-400 px-2 py-2 hover:bg-orange-700"
+							// onClick={resetForm}
+						>
+							View
+						</button>
+						<button
+							className="rounded-md text-white font-semibold bg-indigo-400 px-2 py-2 hover:bg-indigo-700"
+							onClick={(e) => editBook(book)}
+						>
+							Edit
+						</button>
+					</div>
 				</div>
 			</div>
 		);

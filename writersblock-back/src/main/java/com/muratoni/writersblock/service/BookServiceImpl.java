@@ -47,5 +47,13 @@ public class BookServiceImpl implements BookService{
 
         return BookMapper.toDto(res);
     }
+
+    @Override
+    public boolean deleteBook(Long id) {
+        BookEntity bookEntity = bookRepository.findById(id).get();
+        bookRepository.delete(bookEntity);
+
+        return true;
+    }
     
 }
