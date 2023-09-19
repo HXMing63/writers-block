@@ -32,6 +32,6 @@ public class BookEntity {
     @JoinColumn(name = "my_image_id")
     private MyImageEntity cover;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "bookEntity")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "bookEntity", cascade = CascadeType.ALL)
     private List<ChapterEntity> chapterEntities;
 }
