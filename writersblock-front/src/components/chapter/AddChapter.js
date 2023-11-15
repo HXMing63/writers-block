@@ -7,7 +7,7 @@ import ChapterCharMultiSelect from "./ChapterCharMultiSelect";
 import ChapterSettingMultiSelect from "./ChapterSettingMultiSelect";
 import ChapterService from "../../services/ChapterService";
 
-const AddChapter = ({ fetchData, setShowAdd }) => {
+const AddChapter = ({ bookId, fetchChapterByBookId, setShowAdd }) => {
 	const [charModal, setCharModal] = useState(false);
 	const [settingModal, setSettingModal] = useState(false);
 	const [chapter, setChapter] = useState({
@@ -25,16 +25,22 @@ const AddChapter = ({ fetchData, setShowAdd }) => {
 	};
 
 	const saveChapter = () => {
-		ChapterService.saveChapter(chapter).then(() => {
-			fetchData();
+		const config = {
+			params: {
+				id: bookId,
+			},
+		};
+
+		ChapterService.saveChapter(chapter, config).then(() => {
+			fetchChapterByBookId(bookId);
 		});
-		
+
 		setShowAdd(false);
 	};
 
 	return (
-		<div className="flex flex-col md:flex-row">
-			<div className="w-full md:w-2/3 container mx-auto p-4">
+		<div className="md:flex">
+			<div className="md:flex-grow">
 				<div className="p-4 font-thin text-2xl tracking-wider flex justify-between items-center">
 					<h1>Add New Chapter</h1>
 					<button
@@ -44,14 +50,14 @@ const AddChapter = ({ fetchData, setShowAdd }) => {
 						Save
 					</button>
 				</div>
-				<div className="p-4">
+				<div className="p-2">
 					<ChapterFormFields
 						chapter={chapter}
 						setChapter={setChapter}
 					></ChapterFormFields>
 				</div>
 			</div>
-			<div className="w-full md:w-1/3 container mx-auto p-4">
+			<div className="w-fit mx-auto flex flex-col">
 				<div className="h-1/2 p-4">
 					<h2 className="font-thin text-2xl tracking-wider flex items-center">
 						Characters

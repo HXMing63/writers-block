@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.muratoni.writersblock.model.Chapter;
@@ -28,8 +29,8 @@ public class ChapterController {
     }
 
     @PostMapping("/chapter")
-    public Chapter createPlace(@RequestBody Chapter chapter){
-        return chapterService.createChapter(chapter);
+    public Chapter createChapter(@RequestBody Chapter chapter, @RequestParam Long id){
+        return chapterService.createChapter(chapter, id);
     }
 
     @GetMapping("/chapters")
@@ -37,9 +38,14 @@ public class ChapterController {
         return chapterService.getAllChapters();
     }
 
+    @GetMapping("/chapters/{id}")
+    public List<Chapter> getAllChaptersByBookId(@PathVariable Long id){
+        return chapterService.getAllChaptersByBookId(id);
+    }
+
     @PutMapping("/chapter")
-    public Chapter updateChapter(@RequestBody Chapter chapter){
-        return chapterService.updateChapter(chapter);
+    public Chapter updateChapter(@RequestBody Chapter chapter, @RequestParam Long id){
+        return chapterService.updateChapter(chapter, id);
     }
 
     @DeleteMapping("/chapter/{id}")

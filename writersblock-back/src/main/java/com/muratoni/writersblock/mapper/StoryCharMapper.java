@@ -14,6 +14,10 @@ public class StoryCharMapper {
         StoryChar storyChar = new StoryChar();
         BeanUtils.copyProperties(storyCharEntity, storyChar);
 
+        if (storyCharEntity.getImg() != null){
+            storyChar.setImg(MyImageMapper.toDto(storyCharEntity.getImg()));
+        }
+
         return storyChar;
     }
 
@@ -24,6 +28,10 @@ public class StoryCharMapper {
 
         StoryCharEntity storyCharEntity = new StoryCharEntity();
         BeanUtils.copyProperties(storyChar, storyCharEntity);
+
+        if (storyChar.getImg() != null){
+            storyCharEntity.setImg(MyImageMapper.toEntity(storyChar.getImg()));
+        }
 
         return storyCharEntity;
     }

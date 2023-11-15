@@ -8,10 +8,14 @@ public interface ChapterService {
 
     Chapter createChapter(Chapter chapter);
 
+    Chapter createChapter(Chapter chapter, Long id);
+
     List<Chapter> getAllChapters();
 
-    Chapter updateChapter(Chapter chapter);
-
     boolean deleteChapter(Long id);
+
+    List<Chapter> getAllChaptersByBookId(Long bookId);
+
+    Chapter updateChapter(Chapter chapter, Long id);
     
 }

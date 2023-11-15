@@ -6,7 +6,7 @@ import ChapterCharMultiSelect from "./ChapterCharMultiSelect";
 import ChapterSettingMultiSelect from "./ChapterSettingMultiSelect";
 import ChapterService from "../../services/ChapterService";
 
-const EditChapter = ({ chapterArg, fetchData, setShowEdit }) => {    
+const EditChapter = ({ chapterArg, bookId, fetchBookById, setShowEdit, }) => {
 	const [charModal, setCharModal] = useState(false);
 	const [settingModal, setSettingModal] = useState(false);
 	const [chapter, setChapter] = useState({
@@ -14,7 +14,7 @@ const EditChapter = ({ chapterArg, fetchData, setShowEdit }) => {
 		name: chapterArg.name || "",
 		content: chapterArg.content || "",
 		storyChars: chapterArg.storyChars || [],
-		storySettings: chapterArg.storySettings || []
+		storySettings: chapterArg.storySettings || [],
 	});
 
 	const deleteRow = (key, target) => {
@@ -25,10 +25,17 @@ const EditChapter = ({ chapterArg, fetchData, setShowEdit }) => {
 	};
 
 	const saveChapter = () => {
-		ChapterService.updateChapter(chapter).then(() => {
-			fetchData();
-		});		
-		setShowEdit({isVisible: false});
+		const config = {
+			params: {
+				id: bookId,
+			},
+		};
+
+		ChapterService.updateChapter(chapter, config).then(() => {
+			fetchBookById(bookId);
+		});
+
+		setShowEdit({ isVisible: false });
 	};
 
 	return (
