@@ -4,8 +4,11 @@ import AddBook from "./AddBook";
 import BookService from "../../services/BookService";
 import ModalTemplate from "../assets/components/ModalTemplate";
 import EditBook from "./EditBook";
+import { useNavigate } from "react-router-dom";
 
 const ViewBook = () => {
+	const navigate = useNavigate();
+
 	const [books, setBooks] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [showEdit, setShowEdit] = useState({
@@ -26,12 +29,15 @@ const ViewBook = () => {
 		setIsLoading(false);
 	};
 
+	const viewChapters = (bookId) => {
+		navigate(`/viewChapter/${bookId}`);
+	};
+
 	const editBook = (book) => {
 		setShowEdit({ isVisible: true, book: book });
 	};
 
 	const deleteBook = (id) => {
-		console.log(`id: ${id}`)
 		BookService.deleteBook(id).then(() => {
 			setBooks((prevElement) => {
 				return prevElement.filter((book) => book.id !== id);
@@ -72,7 +78,7 @@ const ViewBook = () => {
 					<div className="w-full space-x-2 flex justify-end">
 						<button
 							className="rounded-md text-white font-semibold bg-orange-400 px-2 py-2 hover:bg-orange-700"
-							// onClick={resetForm}
+							onClick={() => viewChapters(book.id)}
 						>
 							View
 						</button>

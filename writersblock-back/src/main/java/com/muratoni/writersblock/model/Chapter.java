@@ -16,5 +16,4 @@ public class Chapter {
     private String content;
     private List<StoryChar> storyChars;
     private List<StorySetting> storySettings;
-    
 }

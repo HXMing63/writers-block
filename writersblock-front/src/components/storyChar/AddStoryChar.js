@@ -17,8 +17,7 @@ const AddStoryChar = ({ fetchData }) => {
 
 		StoryCharService.saveStoryChar(storyChar)
 			.then((response) => {
-				console.log(response);
-        fetchData();
+				fetchData();
 				resetForm();
 			})
 			.catch((err) => {

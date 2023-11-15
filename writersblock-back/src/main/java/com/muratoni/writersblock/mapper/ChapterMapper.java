@@ -25,6 +25,8 @@ public class ChapterMapper {
                 .map(tStorySetting -> StorySettingMapper.toDto(tStorySetting))
                 .collect(Collectors.toList()));  
 
+        // chapter.setBook(BookMapper.toDto(chapterEntity.getBookEntity()));
+
         return chapter;
     }
 
@@ -44,6 +46,8 @@ public class ChapterMapper {
                 .stream()
                 .map(tStorySetting -> StorySettingMapper.toEntity(tStorySetting))
                 .collect(Collectors.toList()));                  
+
+        // chapterEntity.setBookEntity(BookMapper.toEntity(chapter.getBook()));
 
         return chapterEntity;
     }
