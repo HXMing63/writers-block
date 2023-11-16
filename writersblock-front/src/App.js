@@ -9,20 +9,22 @@ import ViewChapter from "./components/chapter/ViewChapter";
 import ViewBook from "./components/book/ViewBook";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route index element={<ViewHome />}></Route>
-        <Route path="/" element={<ViewHome />}></Route>
-        <Route path="/viewBook" element={<ViewBook />}></Route>
-        <Route path="/viewChapter/:param" element={<ViewChapter />}></Route>
-        <Route path="/viewStoryChar" element={<ViewStoryChar />}></Route>
-        <Route path="/viewPlace" element={<ViewPlace />}></Route>
-        <Route path="/viewStorySetting" element={<ViewStorySetting />}></Route>
-      </Routes>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<Navbar />
+			<div className="mt-20">
+				<Routes>
+					<Route index element={<ViewHome />}></Route>
+					<Route path="/" element={<ViewHome />}></Route>
+					<Route path="/viewBook" element={<ViewBook />}></Route>
+					<Route path="/viewChapter/:param" element={<ViewChapter />}></Route>
+					<Route path="/viewStoryChar" element={<ViewStoryChar />}></Route>
+					<Route path="/viewPlace" element={<ViewPlace />}></Route>
+					<Route path="/viewStorySetting" element={<ViewStorySetting />}></Route>
+				</Routes>
+			</div>
+		</BrowserRouter>
+	);
 }
 
 export default App;
