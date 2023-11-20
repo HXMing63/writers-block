@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BoxThreeDots from "./assets/svg/BoxThreeDots";
+import ThreeDots from "./assets/svg/ThreeDots";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Navbar = () => {
             className="items-center p-3 border rounded text-gray-400 border-gray-400 hover:text-white hover:border-white"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <BoxThreeDots title={"Other Pages"}></BoxThreeDots>
+            <ThreeDots title={"Other Pages"}></ThreeDots>
           </button>
 
           <ul

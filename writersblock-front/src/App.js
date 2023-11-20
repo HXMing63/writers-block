@@ -12,7 +12,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Navbar />
-			<div className="mt-20">
+			<div className="pt-20 h-screen">
 				<Routes>
 					<Route index element={<ViewHome />}></Route>
 					<Route path="/" element={<ViewHome />}></Route>
