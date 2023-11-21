@@ -13,15 +13,39 @@ const ViewHome = () => {
 					Overcoming writer's block, one word at a time
 				</h2>
 			</div>
-			<div className="flex justify-center items-center space-x-2 py-8">
+			<div className="flex flex-wrap justify-center items-center py-8">
 				<div
-					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
 					onClick={() => navigate("/viewBook")}
 				>
 					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
 						Book
 					</h2>
 				</div>
+				<div
+					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					onClick={() => navigate("/viewStoryChar")}
+				>
+					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
+						Character
+					</h2>
+				</div>
+				<div
+					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					onClick={() => navigate("/viewPlace")}
+				>
+					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
+						Place
+					</h2>
+				</div>
+				<div
+					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					onClick={() => navigate("/viewStorySetting")}
+				>
+					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
+						Story Setting
+					</h2>
+				</div>				
 			</div>
 		</div>
 	);
