@@ -108,26 +108,26 @@ const ChapterCharMultiSelect = ({ chapter, setChapter, setModal }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="mx-auto p-4">
       <div className="flex flex-col md:flex-row">
-        <div className="bg-white rounded p-4 shadow h-80 w-72">
-          <h2 className="pb-2 font-thin text-2xl tracking-wider">
+        <div className="bg-transparent rounded p-4 shadow h-64 w-72">
+          <h2 className="pb-2 text-thin-wider-2xl text-gray-200">
             Chosen Characters
           </h2>
-          <ul className="max-h-56 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+          <ul className="max-h-56 my-scrollbar">
             {selectedItems.map((item, index) => (
               <li
                 key={index}
                 onClick={() => removeItemsSelect(item)}
-                className={`mb-2 cursor-pointer hover:text-slate-500 text-ellipsis whitespace-nowrap overflow-hidden`}
+                className={`mb-2 cursor-pointer text-gray-200 hover:text-brand-lightest text-ellipsis whitespace-nowrap overflow-hidden`}
               >
                 {item.name}
               </li>
             ))}
           </ul>
         </div>
-        <div className="bg-white rounded p-4 shadow h-80 w-72">
-          <h2 className="pb-2 font-thin text-2xl tracking-wider">
+        <div className="bg-transparent rounded p-4 md:border-l border-t md:border-t-0 border-brand-lightest h-72 w-72">
+          <h2 className="pb-2 text-thin-wider-2xl text-gray-200">
             Select a Character
           </h2>
           <input
@@ -135,14 +135,14 @@ const ChapterCharMultiSelect = ({ chapter, setChapter, setModal }) => {
             value={query}
             onChange={handleSearch}
             placeholder="Search..."
-            className="mb-2 border-b border-slate-300 focus:border-b focus:border-slate-700 focus:outline-0"
+            className="mb-2 text-gray-200 bg-transparent border-b border-brand-lightest focus:border-b focus:border-white focus:outline-0"
           />
-          <ul className="max-h-56 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+          <ul className="max-h-56 my-scrollbar">
             {!loading && (listItems.map((item, index) => (
               <li
                 key={index}
                 onClick={() => addItemsSelect(item)}
-                className={`mb-2 cursor-pointer hover:text-slate-500 text-ellipsis whitespace-nowrap overflow-hidden`}
+                className={`mb-2 cursor-pointer text-gray-200 hover:text-brand-lightest text-ellipsis whitespace-nowrap overflow-hidden`}
               >
                 {item.name}
               </li>
@@ -152,25 +152,25 @@ const ChapterCharMultiSelect = ({ chapter, setChapter, setModal }) => {
       </div>
       <div className="flex items-center justify-end h-14 w-full space-x-2 pt-4">
         <button
-          className="rounded-md text-white font-thin bg-red-400 px-2 py-2 hover:bg-red-700"
+          className="btn-darkest"
           onClick={() => setModal(false)}
         >
           Cancel
         </button>
         <button
-          className="rounded-md text-white font-thin bg-gray-400 px-2 py-2 hover:bg-gray-700"
+          className="btn-error"
           onClick={removeAllItems}
         >
           Clear All
         </button>
         <button
-          className="rounded-md text-white font-thin bg-blue-400 px-2 py-2 hover:bg-blue-700"
+          className="btn-transparent"
           onClick={addAllItems}
         >
           Select All
         </button>
         <button
-          className="rounded-md text-white font-thin bg-green-400 px-2 py-2 hover:bg-green-700"
+          className="btn-success"
           onClick={(e) => saveList(e, selectedItems)}
         >
           Save

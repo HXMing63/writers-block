@@ -28,24 +28,24 @@ const ViewChapter = () => {
 
 	const formatToAccordion = (chapter) => {
 		return (
-			<div className="divide-y-2">
-				<div className="p-2 md:flex">
-					<div className="my-2 flex-grow max-w-5xl">
-						<label className="block text-gray-600 text-sm font-normal py-2">
+			<div className="divide-y-2 divide-brand-lightest">
+				<div className="md:flex min-h-60">
+					<div className="flex-grow max-w-5xl px-2">
+						<label className="block text-gray-200 text-base font-normal py-2">
 							Content
 						</label>
-						<p>{chapter.content}</p>
+						<p className="text-gray-200 text-sm font-normal">{chapter.content}</p>
 					</div>
-					<div className="w-fit flex flex-col divide-y-2 ">
-						<div className="h-1/2 p-4">
-							<label className="block text-gray-600 text-sm font-normal py-2">
+					<div className="w-64 p-4 flex flex-col divide-y-2 divide-brand-lightest">
+						<div className="h-1/2">
+							<label className="block text-gray-200 text-base font-normal py-2">
 								Characters
 							</label>
-							<ul>
+							<ul className="text-gray-200 text-sm font-normal py-2 my-scrollbar">
 								{chapter.storyChars.length > 0 ? (
 									chapter.storyChars.map((storyChar) => (
 										<li
-											className="hover:text-gray-500 cursor-pointer"
+											className="hover:text-brand-lightest cursor-pointer"
 											onClick={() => triggerCharModal(storyChar)}
 											key={storyChar.id}
 										>
@@ -57,18 +57,17 @@ const ViewChapter = () => {
 								)}
 							</ul>
 						</div>
-						<div className="h-1/2 p-4">
-							<label className="block text-gray-600 text-sm font-normal py-2">
+						<div className="h-1/2">
+							<label className="block text-gray-200 text-base font-normal py-2">
 								Settings
 							</label>
-							<ul>
+							<ul className="text-gray-200 text-sm py-2 my-scrollbar">
 								{chapter.storySettings.length > 0 ? (
 									chapter.storySettings.map((storySetting) => (
-										<li className="flex" key={storySetting.id}>
-											<span className="flex-grow" title={storySetting.time}>
+										<li className="flex cursor-default hover:text-brand-lightest" key={storySetting.id}>
+											<span title={storySetting.time}>
 												{storySetting.place.name}
 											</span>
-											{/* <span>{storySetting.time}</span> */}
 										</li>
 									))
 								) : (
@@ -81,7 +80,7 @@ const ViewChapter = () => {
 				<div className="p-2 flex">
 					<div className="">
 						<button
-							className="rounded-md text-white font-semibold bg-red-400 px-2 py-2 hover:bg-red-700"
+							className="btn-error"
 							onClick={() => deleteChapter(chapter.id)}
 						>
 							Delete
@@ -89,7 +88,7 @@ const ViewChapter = () => {
 					</div>
 					<div className="w-full space-x-2 flex justify-end">
 						<button
-							className="rounded-md text-white font-semibold bg-indigo-400 px-2 py-2 hover:bg-indigo-700"
+							className="btn-transparent"
 							onClick={(e) => editChapter(chapter)}
 						>
 							Edit
@@ -133,14 +132,14 @@ const ViewChapter = () => {
 	}, [bookId]);
 
 	return (
-		<div className="mx-auto overflow-hidden max-h-full">
-			<div className="p-2">
-				<div className="p-2 font-thin text-2xl tracking-wider flex border-b-2 pb-4">
-					<div className="flex-grow py-2">
-						<h1 className="">Chapter View</h1>
+		<div className="page-body my-scrollbar">
+			<div className="p-2 md:w-full mx-auto">
+				<div className="p-2 flex">
+					<div className="flex-grow py-2 text-thin-wider-2xl text-gray-200">
+						<h1>Chapter View</h1>
 					</div>
 					<button
-						className="ml-auto bg-emerald-400 hover:bg-emerald-700 text-white font-thin text-base tracking-wider py-2 px-4 rounded"
+						className="btn-success"
 						onClick={() => setShowAdd(true)}
 					>
 						Add Chapter
@@ -148,7 +147,7 @@ const ViewChapter = () => {
 				</div>
 				<div className="p-4">
 					{isLoading ? (
-						<div className="p-4 font-thin text-2xl tracking-wider">
+						<div className="p-4 text-thin-wider-2xl">
 							Loading...
 						</div>
 					) : chapters.length > 0 ? (

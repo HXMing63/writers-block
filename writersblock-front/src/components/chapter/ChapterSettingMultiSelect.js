@@ -110,18 +110,18 @@ const ChapterSettingMultiSelect = ({ chapter, setChapter, setModal }) => {
 	};
 
 	return (
-		<div className="container mx-auto p-4">
+		<div className="mx-auto p-4">
 			<div className="flex flex-col md:flex-row">
-				<div className="bg-white rounded p-4 shadow h-80 w-72">
-					<h2 className="pb-2 font-thin text-2xl tracking-wider">
+				<div className="bg-transparent rounded p-4 shadow h-64 w-72">
+					<h2 className="pb-2 text-thin-wider-2xl text-gray-200">
 						Chosen Settings
 					</h2>
-					<ul className="max-h-56 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 divide-y-2 divide-gray-100">
+					<ul className="max-h-56 my-scrollbar divide-y-2 divide-brand-lightest">
 						{selectedItems.map((item, index) => (
 							<li
 								key={index}
 								onClick={() => removeItemsSelect(item)}
-								className={`mb-2 cursor-pointer hover:text-slate-500 flex justify-between text-ellipsis whitespace-nowrap overflow-hidden`}
+								className={`mb-2 cursor-pointer text-gray-200 hover:text-brand-lightest flex justify-between text-ellipsis whitespace-nowrap overflow-hidden`}
 							>
 								{item.place.name}
 								<span className="pl-12 pr-2 font-thin text-xs text-ellipsis whitespace-nowrap overflow-hidden text-slate-500">
@@ -131,8 +131,8 @@ const ChapterSettingMultiSelect = ({ chapter, setChapter, setModal }) => {
 						))}
 					</ul>
 				</div>
-				<div className="bg-white rounded p-4 shadow h-80 w-72">
-					<h2 className="pb-2 font-thin text-2xl tracking-wider">
+				<div className="bg-transparent rounded p-4 shadow h-64 w-72">
+					<h2 className="pb-2 text-thin-wider-2xl text-gray-200">
 						Select a Setting
 					</h2>
 					<input
@@ -140,15 +140,15 @@ const ChapterSettingMultiSelect = ({ chapter, setChapter, setModal }) => {
 						value={query}
 						onChange={handleSearch}
 						placeholder="Search..."
-						className="mb-2 border-b border-slate-300 focus:border-b focus:border-slate-700 focus:outline-0"
+						className="mb-2 bg-transparent text-gray-200 border-b border-brand-lightest focus:border-b focus:border-white focus:outline-0"
 					/>
-					<ul className="max-h-56 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 divide-y-2 divide-gray-100">
+					<ul className="max-h-56 my-scrollbar divide-y-2 divide-brand-lightest">
 						{!loading &&
 							listItems.map((item, index) => (
 								<li
 									key={index}
 									onClick={() => addItemsSelect(item)}
-									className={`mb-2 cursor-pointer hover:text-slate-500 flex justify-between text-ellipsis whitespace-nowrap overflow-hidden`}
+									className={`mb-2 cursor-pointer text-gray-200 hover:text-brand-lightest flex justify-between text-ellipsis whitespace-nowrap overflow-hidden`}
 								>
 									{item.place.name}
 									<span className="pl-12 pr-2 font-thin text-xs text-ellipsis whitespace-nowrap overflow-hidden text-slate-500">
@@ -161,25 +161,25 @@ const ChapterSettingMultiSelect = ({ chapter, setChapter, setModal }) => {
 			</div>
 			<div className="flex items-center justify-end h-14 w-full space-x-2 pt-4">
 				<button
-					className="rounded-md text-white font-thin bg-red-400 px-2 py-2 hover:bg-red-700"
+					className="btn-darkest"
 					onClick={() => setModal(false)}
 				>
 					Cancel
 				</button>
 				<button
-					className="rounded-md text-white font-thin bg-gray-400 px-2 py-2 hover:bg-gray-700"
+					className="btn-error"
 					onClick={removeAllItems}
 				>
 					Clear All
 				</button>
 				<button
-					className="rounded-md text-white font-thin bg-blue-400 px-2 py-2 hover:bg-blue-700"
+					className="btn-transparent"
 					onClick={addAllItems}
 				>
 					Select All
 				</button>
 				<button
-					className="rounded-md text-white font-thin bg-green-400 px-2 py-2 hover:bg-green-700"
+					className="btn-success"
 					onClick={(e) => saveList(e, selectedItems)}
 				>
 					Save

@@ -12,7 +12,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Navbar />
-			<div className="pt-20 h-screen">
+			<div className="pt-16 min-h-screen bg-brand-linear-gradient-dark flex flex-col select-none">
 				<Routes>
 					<Route index element={<ViewHome />}></Route>
 					<Route path="/" element={<ViewHome />}></Route>

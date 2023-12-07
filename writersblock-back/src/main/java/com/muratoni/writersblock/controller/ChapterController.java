@@ -50,7 +50,6 @@ public class ChapterController {
 
     @DeleteMapping("/chapter/{id}")
     public boolean deleteChapter(@PathVariable Long id){
-        System.out.println("--------------deleting:" + id);
         return chapterService.deleteChapter(id);
     }
 }

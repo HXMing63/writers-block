@@ -1,4 +1,6 @@
 import React from "react";
+import InputField from "../assets/components/InputField";
+import InputArea from "../assets/components/InputArea";
 
 const ChapterFormFields = ({ chapter, setChapter }) => {
 	const handleChange = (e) => {
@@ -10,23 +12,8 @@ const ChapterFormFields = ({ chapter, setChapter }) => {
 
 	return (
 		<>
-			<input
-				type="text"
-				className="w-full p-2 border border-gray-300 rounded mb-4"
-				placeholder="Chapter Name"
-        name="name"
-				value={chapter.name}
-				onChange={(e) => handleChange(e)}
-			/>
-
-			<textarea
-				className="w-full p-2 border border-gray-300 rounded resize-none"
-				rows={25}
-				placeholder="Write to your hearts desire here..."
-        name="content"
-				value={chapter.content}
-				onChange={(e) => handleChange(e)}
-			></textarea>
+			<InputField label={'Chapter Name'} placeholderText={'Enter Chapter Name Here...'} propName={'name'} propVal={chapter.name} propOnChange={handleChange} />
+			<InputArea label={'Chapter Content'} placeholderText={`Write to your heart's desire here...`} propName={'content'} propRow={25} propVal={chapter.content} propOnChange={handleChange} />
 		</>
 	);
 };

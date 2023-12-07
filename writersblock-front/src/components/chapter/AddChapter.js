@@ -6,6 +6,7 @@ import MinusIcon from "../assets/svg/MinusIcon";
 import ChapterCharMultiSelect from "./ChapterCharMultiSelect";
 import ChapterSettingMultiSelect from "./ChapterSettingMultiSelect";
 import ChapterService from "../../services/ChapterService";
+import ModalTemplate from "../assets/components/ModalTemplate";
 
 const AddChapter = ({ bookId, fetchChapterByBookId, setShowAdd }) => {
 	const [charModal, setCharModal] = useState(false);
@@ -41,12 +42,9 @@ const AddChapter = ({ bookId, fetchChapterByBookId, setShowAdd }) => {
 	return (
 		<div className="md:flex">
 			<div className="md:flex-grow">
-				<div className="p-4 font-thin text-2xl tracking-wider flex justify-between items-center">
-					<h1>Add New Chapter</h1>
-					<button
-						className="bg-emerald-400 hover:bg-emerald-700 text-white font-thin text-2xl tracking-wider py-2 px-4 rounded"
-						onClick={() => saveChapter()}
-					>
+				<div className="p-4 text-thin-wider-2xl flex justify-between items-center">
+					<h1 className="text-gray-200">Add New Chapter</h1>
+					<button className="btn-success" onClick={() => saveChapter()}>
 						Save
 					</button>
 				</div>
@@ -59,30 +57,30 @@ const AddChapter = ({ bookId, fetchChapterByBookId, setShowAdd }) => {
 			</div>
 			<div className="w-fit mx-auto flex flex-col">
 				<div className="h-1/2 p-4">
-					<h2 className="font-thin text-2xl tracking-wider flex items-center">
+					<h2 className="text-thin-wider-2xl text-gray-200 flex items-center">
 						Characters
 						<span
-							className="ml-auto hover:shadow-2xl hover:cursor-pointer hover:bg-gray-200"
+							className="ml-auto rounded-md text-brand-lightest hover:text-brand-darkest hover:cursor-pointer hover:bg-brand-lightest"
 							onClick={() => setCharModal(!charModal)}
 						>
 							<PlusIcon />
 						</span>
 					</h2>
-					<div className="max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-						<ul className="divide-y-2 divide-gray-100">
+					<div className="max-h-80 my-scrollbar">
+						<ul className="divide-y-2 divide-brand-lightest">
 							{chapter.storyChars.length === 0 ? (
-								<li className="p-3 font-thin text-md tracking-wider flex items-center">
+								<li className="p-3 font-thin text-md tracking-wider flex items-center text-gray-200">
 									There is no character yet
 								</li>
 							) : (
 								chapter.storyChars.map((item, index) => (
 									<li
 										key={index}
-										className={`p-3 font-thin text-md tracking-wider flex items-center`}
+										className={`p-3 font-thin text-md tracking-wider flex items-center text-gray-200`}
 									>
 										{item.name}
 										<span
-											className="ml-auto hover:shadow-2xl hover:cursor-pointer hover:bg-gray-200"
+											className="ml-auto rounded-md text-brand-lightest hover:text-brand-darkest hover:cursor-pointer hover:bg-brand-lightest"
 											onClick={() => deleteRow("storyChars", item)}
 										>
 											<MinusIcon />
@@ -94,33 +92,33 @@ const AddChapter = ({ bookId, fetchChapterByBookId, setShowAdd }) => {
 					</div>
 				</div>
 				<div className="h-1/2 p-4">
-					<h2 className="font-thin text-2xl tracking-wider flex items-center">
+					<h2 className="text-thin-wider-2xl flex items-center text-gray-200">
 						Settings
 						<span
-							className="ml-auto hover:shadow-2xl hover:cursor-pointer hover:bg-gray-200"
+							className="ml-auto rounded-md text-brand-lightest hover:text-brand-darkest hover:cursor-pointer hover:bg-brand-lightest"
 							onClick={() => setSettingModal(!settingModal)}
 						>
 							<PlusIcon />
 						</span>
 					</h2>
-					<div className="max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-						<ul className="divide-y-2 divide-gray-100">
+					<div className="max-h-80 my-scrollbar">
+						<ul className="divide-y-2 divide-brand-lightest">
 							{chapter.storySettings.length === 0 ? (
-								<li className="p-3 font-thin text-md tracking-wider flex items-center">
+								<li className="p-3 font-thin text-md tracking-wider flex items-center text-gray-200">
 									There is no setting yet
 								</li>
 							) : (
 								chapter.storySettings.map((item, index) => (
 									<li
 										key={index}
-										className={`p-3 font-thin text-md tracking-wider flex flex-wrap items-center text-ellipsis whitespace-nowrap overflow-hidden`}
+										className={`p-3 font-thin text-md tracking-wider flex flex-wrap items-center text-ellipsis whitespace-nowrap overflow-hidden text-gray-200`}
 									>
 										<span className="flex-grow">{item.place.name}</span>
 										<span className="pr-2 font-thin text-xs text-ellipsis whitespace-nowrap overflow-hidden text-slate-500">
 											{item.time}
 										</span>
 										<span
-											className="ml-auto hover:shadow-2xl hover:cursor-pointer hover:bg-gray-200"
+											className="ml-auto rounded-md text-brand-lightest hover:text-brand-darkest hover:cursor-pointer hover:bg-brand-lightest"
 											onClick={() => deleteRow("storySettings", item)}
 										>
 											<MinusIcon />
@@ -132,34 +130,20 @@ const AddChapter = ({ bookId, fetchChapterByBookId, setShowAdd }) => {
 					</div>
 				</div>
 			</div>
-			{charModal && (
-				<div className="flex flex-shrink fixed inset-0 z-10 overflow-y-hidden overflow-x-hidden justify-center">
-					<div className="fixed inset-0 w-full h-full bg-black opacity-40"></div>
-					<div className="flex items-center px-4 py-8">
-						<div className="relative max-w-fit mx-auto bg-white rounded-md shadow-lg">
-							<ChapterCharMultiSelect
-								chapter={chapter}
-								setChapter={setChapter}
-								setModal={setCharModal}
-							/>
-						</div>
-					</div>
-				</div>
-			)}
-			{settingModal && (
-				<div className="flex flex-shrink fixed inset-0 z-10 overflow-y-hidden overflow-x-hidden justify-center">
-					<div className="fixed inset-0 w-full h-full bg-black opacity-40"></div>
-					<div className="flex items-center px-4 py-8">
-						<div className="relative mx-auto bg-white rounded-md shadow-lg">
-							<ChapterSettingMultiSelect
-								chapter={chapter}
-								setChapter={setChapter}
-								setModal={setSettingModal}
-							/>
-						</div>
-					</div>
-				</div>
-			)}
+			<ModalTemplate isOpen={charModal} onClose={() => setCharModal(false)}>
+				<ChapterCharMultiSelect
+					chapter={chapter}
+					setChapter={setChapter}
+					setModal={setCharModal}
+				/>
+			</ModalTemplate>
+			<ModalTemplate isOpen={settingModal} onClose={() => setSettingModal(false)}>
+				<ChapterSettingMultiSelect
+					chapter={chapter}
+					setChapter={setChapter}
+					setModal={setSettingModal}
+				/>
+			</ModalTemplate>
 		</div>
 	);
 };

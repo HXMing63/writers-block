@@ -4,48 +4,40 @@ import { useNavigate } from "react-router-dom";
 const ViewHome = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="bg-gray-100 h-full">
-			<div className="flex flex-col justify-center items-center space-y-4">
-				<h1 className="text-2xl md:text-6xl font-bold text-gray-900">
+		<div className="bg-brand-linear-gradient flex-grow pt-10">
+			<div className="flex flex-col justify-center items-center space-y-4 hover:cursor-default">
+				<h1 className="text-2xl md:text-6xl font-bold text-white">
 					Writer's Block
 				</h1>
-				<h2 className="text-lg md:text-2xl font-semibold text-gray-700">
+				<h2 className="text-lg md:text-2xl font-semibold text-gray-200">
 					Overcoming writer's block, one word at a time
 				</h2>
 			</div>
 			<div className="flex flex-wrap justify-center items-center py-8">
 				<div
-					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					className="bg-brand-darkest border border-brand-lightest rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 text-lg font-bold text-gray-200 mb-4 text-center hover:shadow-2xl hover:cursor-pointer hover:bg-brand-lightest hover:text-brand-darkest"
 					onClick={() => navigate("/viewBook")}
 				>
-					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
-						Book
-					</h2>
+					Book
 				</div>
 				<div
-					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					className="bg-brand-darkest border border-brand-lightest rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 text-lg font-bold text-gray-200 mb-4 text-center hover:shadow-2xl hover:cursor-pointer hover:bg-brand-lightest hover:text-brand-darkest"
 					onClick={() => navigate("/viewStoryChar")}
 				>
-					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
-						Character
-					</h2>
+					Character
 				</div>
 				<div
-					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					className="bg-brand-darkest border border-brand-lightest rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 text-lg font-bold text-gray-200 mb-4 text-center hover:shadow-2xl hover:cursor-pointer hover:bg-brand-lightest hover:text-brand-darkest"
 					onClick={() => navigate("/viewPlace")}
 				>
-					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
-						Place
-					</h2>
+					Place
 				</div>
 				<div
-					className="bg-white rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 hover:shadow-2xl hover:cursor-pointer hover:bg-gray-100"
+					className="bg-brand-darkest border border-brand-lightest rounded-lg shadow-md p-8 flex justify-center items-center my-4 mx-4 h-32 w-32 text-lg font-bold text-gray-200 mb-4 text-center hover:shadow-2xl hover:cursor-pointer hover:bg-brand-lightest hover:text-brand-darkest"
 					onClick={() => navigate("/viewStorySetting")}
 				>
-					<h2 className="text-lg font-bold text-gray-900 mb-4 text-center">
-						Story Setting
-					</h2>
-				</div>				
+					Story Setting
+				</div>
 			</div>
 		</div>
 	);

@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.page-body {
+		@apply p-2 md:flex bg-transparent flex-grow max-h-224;
+	}
+
+	.my-scrollbar {
+		@apply overflow-y-auto scrollbar-thin scrollbar-thumb-brand-dark-analogous scrollbar-track-brand-darkest scrollbar-thumb-rounded-lg;
+	}
+
+	.text-thin-wider-2xl {
+		@apply font-thin text-2xl tracking-wider;
+	}
+
+    .input-field-dark{
+        @apply rounded-md border border-brand-lightest bg-brand-dark text-gray-200 focus:border-white focus:ring-0 focus:outline-none
+    }
+
+	.btn-success {
+		@apply rounded-md font-semibold text-white border-2 border-brand-lightest bg-brand-success p-2 hover:bg-brand-success-analogous hover:text-brand-darkest;
+	}
+
+	.btn-error {
+		@apply rounded-md font-semibold text-white border-2 border-brand-lightest bg-brand-error p-2 hover:bg-brand-error-analogous hover:text-brand-darkest;
+	}
+
+	.btn-darkest {
+		@apply rounded-md font-semibold text-white bg-brand-darkest border border-brand-lightest px-2 py-2 hover:bg-brand-lightest hover:text-brand-darkest;
+	}
+
+	.btn-transparent {
+		@apply rounded-md font-semibold text-white bg-transparent border border-brand-lightest px-2 py-2 hover:bg-brand-lightest hover:text-brand-darkest;
+	}
+}
