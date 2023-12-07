@@ -24,9 +24,7 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Override
     public Chapter createChapter(Chapter chapter) {
-        // BookEntity bookEntity = bookRepository.findById(chapter.getBook().getId()).get();
         ChapterEntity chapterEntity = ChapterMapper.toEntity(chapter);
-        // chapterEntity.setBookEntity(bookEntity);
 
         ChapterEntity tRes = chapterRepository.save(chapterEntity);
         return ChapterMapper.toDto(tRes);

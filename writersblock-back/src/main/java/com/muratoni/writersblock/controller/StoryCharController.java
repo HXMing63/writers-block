@@ -49,24 +49,13 @@ public class StoryCharController {
     }
 
     @GetMapping("/storychars/except/{ids}")
-    // public List<StoryChar> getAllStoryCharsExceptArgs(@RequestParam("ids") String ids){
     public List<StoryChar> getStoryCharsExcept(@PathVariable("ids") String ids){
         List<Long> tIds = Arrays.stream(ids.split(",")).map(Long::parseLong).collect(Collectors.toList());
-        // System.out.println("---ids: " + ids);
-        // try {
-        //     tIds = objMapper.readValue(ids, new TypeReference<List<Long>>() {});
-        // } catch (JsonMappingException e) {
-        //     e.printStackTrace();
-        // } catch (JsonProcessingException e) {
-        //     e.printStackTrace();
-        // }
         return storyCharService.getStoryCharsExcept(tIds);
-        // return storyCharService.getAllStoryCharsExceptArgs(ids);
     }
 
     @GetMapping("/storychars/name_except")
     public List<StoryChar> getStoryCharsByNameExcept(@RequestParam("name") String name, @RequestParam("ids") String ids){
-        // System.out.println("----------name: " + name + "|ids: " + ids);
         List<Long> tIds = null;
 
         if (ids.length() == 0){
@@ -86,7 +75,7 @@ public class StoryCharController {
     }
 
     @DeleteMapping("/storychar/{id}")
-    public ResponseEntity<Map<String,Boolean>> deletePlace(@PathVariable Long id){
+    public ResponseEntity<Map<String,Boolean>> deleteStoryChar(@PathVariable Long id){
         boolean isDeleted = false;
         isDeleted = storyCharService.deleteStoryChar(id);
 

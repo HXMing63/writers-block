@@ -41,52 +41,40 @@ const ViewBook = () => {
 		BookService.deleteBook(id).then(() => {
 			setBooks((prevElement) => {
 				return prevElement.filter((book) => book.id !== id);
-			})
+			});
 		});
-	}
+	};
 
 	const formatToAccordion = (book) => {
 		return (
-			<div className="divide-y-2">
+			<div className="divide-y-2 divide-brand-lightest text-gray-200">
 				<div className="my-2">
-					<label className="block text-gray-600 text-sm font-normal py-2">
-						Synopsis
-					</label>
+					<label className="block text-sm font-normal py-2">Synopsis</label>
 					<p>{book.synopsis}</p>
 				</div>
 				<div className="my-2">
-					<label className="block text-gray-600 text-sm font-normal py-2">
-						Theme
-					</label>
+					<label className="block text-sm font-normal py-2">Theme</label>
 					<p>{book.theme}</p>
 				</div>
 				<div className="my-2">
-					<label className="block text-gray-600 text-sm font-normal py-2">
-						Cover
-					</label>
+					<label className="block text-sm font-normal py-2">Cover</label>
 					<p>{book.cover.name}</p>
 				</div>
 				<div className="pt-4 flex">
 					<div className="">
-						<button
-							className="rounded-md text-white font-semibold bg-red-400 px-2 py-2 hover:bg-red-700"
-							onClick={() => deleteBook(book.id)}
-						>
+						<button className="btn-error" onClick={() => deleteBook(book.id)}>
 							Delete
 						</button>
 					</div>
 					<div className="w-full space-x-2 flex justify-end">
+						<button className="btn-transparent" onClick={(e) => editBook(book)}>
+							Edit
+						</button>
 						<button
-							className="rounded-md text-white font-semibold bg-orange-400 px-2 py-2 hover:bg-orange-700"
+							className="btn-darkest"
 							onClick={() => viewChapters(book.id)}
 						>
 							View
-						</button>
-						<button
-							className="rounded-md text-white font-semibold bg-indigo-400 px-2 py-2 hover:bg-indigo-700"
-							onClick={(e) => editBook(book)}
-						>
-							Edit
 						</button>
 					</div>
 				</div>
@@ -99,14 +87,14 @@ const ViewBook = () => {
 	}, []);
 
 	return (
-		<div className="p-2 md:flex">
+		<div className="page-body my-scrollbar">
 			<div className="md:flex-grow">
-				<div className="p-4 font-thin text-2xl tracking-wider">
+				<div className="p-4 text-thin-wider-2xl text-gray-200">
 					<h1>Book View</h1>
 				</div>
 				<div className="p-4">
 					{isLoading ? (
-						<div className="p-4 font-thin text-2xl tracking-wider">
+						<div className="p-4 text-thin-wider-2xl text-gray-200">
 							Loading...
 						</div>
 					) : (

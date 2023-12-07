@@ -49,24 +49,13 @@ public class StorySettingController {
     }
 
     @GetMapping("/storysettings/except/{ids}")
-    // public List<StoryChar> getAllStoryCharsExceptArgs(@RequestParam("ids") String ids){
-    public List<StorySetting> getStoryCharsExcept(@PathVariable("ids") String ids){
+    public List<StorySetting> getStorySettingsExcept(@PathVariable("ids") String ids){
         List<Long> tIds = Arrays.stream(ids.split(",")).map(Long::parseLong).collect(Collectors.toList());
-        // System.out.println("---ids: " + ids);
-        // try {
-        //     tIds = objMapper.readValue(ids, new TypeReference<List<Long>>() {});
-        // } catch (JsonMappingException e) {
-        //     e.printStackTrace();
-        // } catch (JsonProcessingException e) {
-        //     e.printStackTrace();
-        // }
         return storySettingService.getStorySettingsExcept(tIds);
-        // return storySettingService.getAllStoryCharsExceptArgs(ids);
     }
 
     @GetMapping("/storysettings/name_except")
-    public List<StorySetting> getStoryCharsByNameExcept(@RequestParam("name") String name, @RequestParam("ids") String ids){
-        // System.out.println("----------name: " + name + "|ids: " + ids);
+    public List<StorySetting> getStorySettingsByNameExcept(@RequestParam("name") String name, @RequestParam("ids") String ids){
         List<Long> tIds = null;
 
         if (ids.length() == 0){
@@ -79,7 +68,7 @@ public class StorySettingController {
     }
 
     @PutMapping("/storysetting/{id}")
-    public ResponseEntity<StorySetting> updatePlace(@PathVariable Long id, @RequestBody StorySetting storySetting){
+    public ResponseEntity<StorySetting> updateStorySetting(@PathVariable Long id, @RequestBody StorySetting storySetting){
         storySetting = storySettingService.updateStorySetting(id, storySetting);
         
         return ResponseEntity.ok(storySetting);

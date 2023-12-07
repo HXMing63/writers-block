@@ -15,6 +15,7 @@ const ChevronDown = () => {
 				strokeWidth="2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
+				className="stroke-brand-lightest"
 			/>
 			<path
 				d="M19 13L12.7071 19.2929C12.3166 19.6834 11.6834 19.6834 11.2929 19.2929L5 13"
@@ -22,6 +23,7 @@ const ChevronDown = () => {
 				strokeWidth="2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
+				className="stroke-brand-lightest"
 			/>
 		</svg>
 	);
