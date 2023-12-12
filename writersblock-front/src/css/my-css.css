@@ -34,4 +34,12 @@
 	.btn-transparent {
 		@apply rounded-md font-semibold text-white bg-transparent border border-brand-lightest px-2 py-2 hover:bg-brand-lightest hover:text-brand-darkest;
 	}
+
+	.brand-card{
+		@apply h-32 w-32 flex justify-center items-center bg-brand-darkest border border-brand-lightest rounded-lg shadow-md hover:shadow-2xl hover:cursor-pointer hover:bg-brand-dark;
+	}
+
+	.text-gray-hover{
+		@apply text-gray-200 hover:text-brand-darkest;
+	}
 }

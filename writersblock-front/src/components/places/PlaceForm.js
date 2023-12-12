@@ -1,4 +1,7 @@
 import React from "react";
+import InputField from "../assets/components/InputField";
+import InputArea from "../assets/components/InputArea";
+import InputChooser from "../assets/components/InputChooser";
 
 const PlaceForm = ({ place, setPlace }) => {
 	const handleChange = (e) => {
@@ -26,7 +29,10 @@ const PlaceForm = ({ place, setPlace }) => {
 
 	return (
 		<>
-			<div className="items-center justify-center h-14 w-full my-4">
+			<InputField label={"Name"} propName={"name"} propVal={place.name} propOnChange={handleChange} placeholderText={"Enter name of place..."} />
+			<InputArea label={"Description"} propName={"description"} propVal={place.description} propOnChange={handleChange} placeholderText={"Enter description of place..."} propRow={5} />
+			<InputChooser label={"Image Source"} propName={"img"} propOnChange={handleImgChange} fileInputKey={place.fileInputKey} prevObj={place.img} />
+			{/* <div className="items-center justify-center h-14 w-full my-4">
 				<label className="block text-gray-600 text-sm font-normal">Name</label>
 				<input
 					type="text"
@@ -35,8 +41,8 @@ const PlaceForm = ({ place, setPlace }) => {
 					onChange={(e) => handleChange(e)}
 					className="rounded-md h-10 w-96 border mt-2 px-2 py-2"
 				></input>
-			</div>
-			<div className="items-center justify-center h-40 w-full my-4">
+			</div> */}
+			{/* <div className="items-center justify-center h-40 w-full my-4">
 				<label className="block text-gray-600 text-sm font-normal">
 					Description
 				</label>
@@ -69,7 +75,7 @@ const PlaceForm = ({ place, setPlace }) => {
 				>
 					PNG, JPEG, or JPG only
 				</p>
-			</div>
+			</div> */}
 		</>
 	);
 };
