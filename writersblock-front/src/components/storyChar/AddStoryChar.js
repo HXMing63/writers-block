@@ -8,7 +8,7 @@ const AddStoryChar = ({ fetchData }) => {
 		name: "",
 		description: "",
 		charSong: "",
-		img: { name: "", data: null },
+		img: null,
 		fileInputKey: Date.now(),
 	});
 

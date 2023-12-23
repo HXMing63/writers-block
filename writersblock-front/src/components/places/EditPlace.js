@@ -38,7 +38,7 @@ const EditPlace = ({ toEdit, setModal, fetchData, deletePlace }) => {
 				</div>
 				<button
 					className="btn-success"
-					onClick={(e) => updatePlace(e, place)}
+					onClick={() => updatePlace(place)}
 				>
 					Update
 				</button>
