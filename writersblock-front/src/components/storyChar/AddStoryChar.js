@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StoryCharForm from "./StoryCharForm";
 import StoryCharService from "../../services/StoryCharService";
+import AddSideComponent from "../assets/template/AddSideComponentTemplate";
 
 const AddStoryChar = ({ fetchData }) => {
 	const [storyChar, setStoryChar] = useState({
@@ -36,31 +37,16 @@ const AddStoryChar = ({ fetchData }) => {
 	};
 
 	return (
-		<div className="flex flex-shrink max-w-md shadow border-b mx-auto">
-			<div className="px-4 py-4">
-				<div className="font-thin text-2xl tracking-wider">
-					<h1>Add New Character</h1>
-				</div>
-				<StoryCharForm
-					storyChar={storyChar}
-					setStoryChar={setStoryChar}
-				></StoryCharForm>
-				<div className="flex items-center justify-end h-14 w-full my-8 space-x-2 pt-4">
-					<button
-						className="rounded-md text-white font-semibold bg-red-400 px-2 py-2 hover:bg-red-700"
-						onClick={resetForm}
-					>
-						Clear
-					</button>
-					<button
-						className="rounded-md text-white font-semibold bg-green-400 px-2 py-2 hover:bg-green-700"
-						onClick={(e) => saveStoryChar(e)}
-					>
-						Save
-					</button>
-				</div>
-			</div>
-		</div>
+		<AddSideComponent
+			title={"Add New Character"}
+			saveFunc={saveStoryChar}
+			resetForm={resetForm}
+		>
+			<StoryCharForm
+				storyChar={storyChar}
+				setStoryChar={setStoryChar}
+			></StoryCharForm>
+		</AddSideComponent>
 	);
 };
 

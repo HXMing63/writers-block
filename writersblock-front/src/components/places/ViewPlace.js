@@ -5,7 +5,7 @@ import EditPlace from "./EditPlace";
 import ImageService from "../../services/ImageService";
 import ImageCard from "../assets/components/ImageCard";
 import ModalTemplate from "../assets/components/ModalTemplate";
-import ViewAddPage from "../assets/template/ViewAddPage";
+import ViewAddPage from "../assets/template/ViewAddPageTemplate";
 
 const ViewPlace = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -48,21 +48,26 @@ const ViewPlace = () => {
 
 	return (
 		<ViewAddPage>
-			<div className="flex flex-wrap justify-center">
-				{isLoading ? (
-					<div className="p-4 text-thin-wider-2xl text-gray-200">
-						Loading...
-					</div>
-				) : (
-					places.map((place) => (
-						<div onClick={() => editPlace(place)} key={place.id}>
-							<ImageCard
-								imgSrc={ImageService.createImgURL(place.img)}
-								cardName={place.name}
-							/>
+			<div className="flex flex-col">
+				<div className="p-4 justify-start">
+					<span className="text-thin-wider-2xl text-gray-200">View Places</span>
+				</div>
+				<div className="flex flex-wrap justify-center">
+					{isLoading ? (
+						<div className="p-4 text-thin-wider-2xl text-gray-200">
+							Loading...
 						</div>
-					))
-				)}
+					) : (
+						places.map((place) => (
+							<div onClick={() => editPlace(place)} key={place.id}>
+								<ImageCard
+									imgSrc={ImageService.createImgURL(place.img)}
+									cardName={place.name}
+								/>
+							</div>
+						))
+					)}
+				</div>
 			</div>
 			<div className="w-fit mx-auto flex">
 				<AddPlace fetchData={fetchData}></AddPlace>
