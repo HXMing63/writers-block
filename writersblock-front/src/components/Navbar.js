@@ -8,8 +8,8 @@ const Navbar = () => {
 	const navMenuRef = useRef(null);
 
 	useEffect(() => {
-		const handleClickOutside = (event) => {
-			if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
+		const handleClickOutside = (e) => {
+			if (navMenuRef.current && !navMenuRef.current.contains(e.target)) {
 				setIsOpen(false);
 			}
 		};
