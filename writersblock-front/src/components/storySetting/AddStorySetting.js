@@ -49,7 +49,6 @@ const AddStorySetting = ({ fetchData }) => {
 				setQuery={setQuery}
 				places={places}
 				setPlaces={setPlaces}
-				prev={""}
 			></StorySettingForm>
 		</AddSideComponent>
 	);
