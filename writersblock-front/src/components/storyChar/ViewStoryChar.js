@@ -36,6 +36,7 @@ const ViewStoryChar = () => {
 			setStoryChars((prevElement) => {
 				return prevElement.filter((storyChar) => storyChar.id !== id);
 			});
+			setModal({isVisible: false});
 		});
 	};
 
