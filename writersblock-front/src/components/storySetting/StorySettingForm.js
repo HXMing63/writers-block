@@ -1,11 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import PlaceService from "../../services/PlaceService";
 import InputFieldSuggestion from "../assets/components/InputFieldSuggestion";
 import InputField from "../assets/components/InputField";
 
-const StorySettingForm = ({ storySetting, setStorySetting, query, setQuery, places, setPlaces }) => {
-	const [placeIndex, setPlaceIndex] = useState(null);
-
+const StorySettingForm = ({
+	storySetting,
+	setStorySetting,
+	query,
+	setQuery,
+	places,
+	setPlaces,
+}) => {
 	const prevQuery = useRef("");
 
 	useEffect(() => {
@@ -42,17 +47,6 @@ const StorySettingForm = ({ storySetting, setStorySetting, query, setQuery, plac
 		prevQuery.current = place.name;
 		setStorySetting({ ...storySetting, place: place });
 		setPlaces([]);
-		setPlaceIndex(null);
-	};
-
-	const handleKeyDown = (e) => {
-		if (e.key === "ArrowDown" && placeIndex !== places.length - 1) {
-			setPlaceIndex(placeIndex === null ? 0 : placeIndex + 1);
-		} else if (e.key === "ArrowUp" && placeIndex !== 0) {
-			setPlaceIndex(placeIndex === null ? places.length - 1 : placeIndex - 1);
-		} else if (e.key === "Enter" && placeIndex !== null) {
-			handleSelectPlace(e, places[placeIndex]);
-		}
 	};
 
 	const handleChange = (e) => {
@@ -61,8 +55,22 @@ const StorySettingForm = ({ storySetting, setStorySetting, query, setQuery, plac
 
 	return (
 		<>
-      <InputFieldSuggestion label={"Place"} propName={"place"} propVal={query} propOnChange={(e) => setQuery(e.target.value)} items={places} handleSelectItem={handleSelectPlace} placeholderText={"Enter place here..."}/>
-      <InputField label={"Time"} propName={"time"} propVal={storySetting.time} propOnChange={handleChange} placeholderText={"Enter time here..."}/>
+			<InputFieldSuggestion
+				label={"Place"}
+				propName={"place"}
+				propVal={query}
+				propOnChange={(e) => setQuery(e.target.value)}
+				items={places}
+				handleSelectItem={handleSelectPlace}
+				placeholderText={"Enter place here..."}
+			/>
+			<InputField
+				label={"Time"}
+				propName={"time"}
+				propVal={storySetting.time}
+				propOnChange={handleChange}
+				placeholderText={"Enter time here..."}
+			/>
 		</>
 	);
 };

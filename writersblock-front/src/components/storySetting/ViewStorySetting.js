@@ -37,6 +37,7 @@ const ViewStorySetting = () => {
 			setStorySettings((prevElement) => {
 				return prevElement.filter((storySetting) => storySetting.id !== id);
 			});
+			setModal({isVisible: false});
 		});
 	};
 
@@ -89,10 +90,10 @@ const ViewStorySetting = () => {
 				onClose={() => setModal({ isVisible: false })}
 			>
 				<EditStorySetting
-					toEdit={modal.storyChar}
+					toEdit={modal.storySetting}
 					setModal={setModal}
 					fetchData={fetchData}
-					// deleteStoryChar={deleteStoryChar}
+					deleteStorySetting={deleteStorySetting}
 				/>
 			</ModalTemplate>
 		</ViewAddPage>
