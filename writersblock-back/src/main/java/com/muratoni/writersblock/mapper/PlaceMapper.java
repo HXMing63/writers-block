@@ -7,7 +7,7 @@ import com.muratoni.writersblock.model.Place;
 
 @Component
 public class PlaceMapper {
-    public PlaceEntity toEntity(Place place) {
+    public static PlaceEntity toEntity(Place place) {
         if (place == null) {
             return null;
         }
@@ -16,12 +16,12 @@ public class PlaceMapper {
         placeEntity.setId(place.getId());
         placeEntity.setName(place.getName());
         placeEntity.setDescription(place.getDescription());
-        placeEntity.setImg(place.getImg());
+        placeEntity.setImg(MyImageMapper.toEntity(place.getImg()));
 
         return placeEntity;
     }
 
-    public Place toDto(PlaceEntity placeEntity) {
+    public static Place toDto(PlaceEntity placeEntity) {
         if (placeEntity == null) {
             return null;
         }
@@ -30,7 +30,7 @@ public class PlaceMapper {
         place.setId(placeEntity.getId());
         place.setName(placeEntity.getName());
         place.setDescription(placeEntity.getDescription());
-        place.setImg(placeEntity.getImg());
+        place.setImg(MyImageMapper.toDto(placeEntity.getImg()));
 
         return place;
     }

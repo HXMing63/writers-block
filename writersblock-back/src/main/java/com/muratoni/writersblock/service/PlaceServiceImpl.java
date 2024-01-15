@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.muratoni.writersblock.entity.PlaceEntity;
+import com.muratoni.writersblock.mapper.MyImageMapper;
+import com.muratoni.writersblock.mapper.PlaceMapper;
 import com.muratoni.writersblock.model.Place;
 import com.muratoni.writersblock.repository.PlaceRepository;
 
@@ -21,8 +23,7 @@ public class PlaceServiceImpl implements PlaceService {
 
     @Override
     public Place createPlace(Place place) {
-        PlaceEntity placeEntity = new PlaceEntity();
-        BeanUtils.copyProperties(place, placeEntity);
+        PlaceEntity placeEntity = PlaceMapper.toEntity(place);        
 
         placeRepository.save(placeEntity);
 
@@ -38,7 +39,7 @@ public class PlaceServiceImpl implements PlaceService {
                         tPlace.getId(),
                         tPlace.getName(),
                         tPlace.getDescription(),
-                        tPlace.getImg()))
+                        MyImageMapper.toDto(tPlace.getImg())))
                 .collect(Collectors.toList());
         return places;
     }
@@ -66,20 +67,20 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public boolean deletePlace(Long id) {
-        PlaceEntity placeEntity = placeRepository.findById(id).get();
-        placeRepository.delete(placeEntity);
-        return true;
-    }
-
-    @Override
     public Place updatePlace(Long id, Place place) {
         PlaceEntity placeEntity = placeRepository.findById(id).get();
         placeEntity.setName(place.getName());
         placeEntity.setDescription(place.getDescription());
-        placeEntity.setImg(place.getImg());
+        placeEntity.setImg(MyImageMapper.toEntity(place.getImg()));
         placeRepository.save(placeEntity);
         return place;
+    }
+
+    @Override
+    public boolean deletePlace(Long id) {
+        PlaceEntity placeEntity = placeRepository.findById(id).get();
+        placeRepository.delete(placeEntity);
+        return true;
     }
 
 }
